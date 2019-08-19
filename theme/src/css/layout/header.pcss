@@ -3,18 +3,39 @@
 }
 
 .header-main {
-  @apply fixed w-full flex items-center;
-}
-
-.header-main {
-  @apply bg-transparent;
+  @apply bg-transparent fixed w-full flex items-center;
   padding-bottom: calc($site-offset / 2);
   padding-top: calc($site-offset * 2);
   transition: $short ease;
+  top: 0;
   
 
   &.pinned {
     @apply bg-white;
     padding-top: $site-offset;
+    &.hidden-on-scroll {
+      top: -60px;
+      padding-bottom: calc($site-offset / 4);
+      &.hover {
+        top: 0;
+      }
+    }
+  }
+}
+
+.breadcrumps {
+  li {
+    @apply ml-4;
+
+    &:first-child {
+      @apply ml-0;
+    }
+
+    &:not(:last-child) {
+      &::after {
+        @apply ml-4;
+        content: ">";
+      }
+    }
   }
 }

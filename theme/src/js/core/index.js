@@ -42,6 +42,21 @@ class Core {
     window.addEventListener('resize', throttle((event) => {
       eventBus.$emit('window-resized', event)
     }, 250))
+
+    window.addEventListener('scroll', (event) => {
+      let scrollDirection = scrollController.info().scrollDirection
+      if (this.currScrollDirection !== scrollDirection) {
+        this.currScrollDirection = scrollDirection
+        this.scrollStartPos = scrollController.scrollPos()
+        this.triggerScrollEvent = true
+      } else {
+        this.scrollOffset = Math.abs(scrollController.scrollPos() - this.scrollStartPos)
+        if (this.scrollOffset > 80 && this.triggerScrollEvent) {
+          eventBus.$emit('scrolled-past-offset', { direction: this.currScrollDirection })
+          this.triggerScrollEvent = false
+        }
+      }
+    })
   }
 
   attach(module, options = {}, reinit = false) {

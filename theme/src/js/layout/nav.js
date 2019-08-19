@@ -12,9 +12,14 @@ class Nav extends CoreModule {
       toggle.addEventListener('click', this.onToggle)
     })
 
-    this.closers = document.querySelectorAll('.nav-menu-item')
-    this.closers.forEach((closer) => {
-      closer.addEventListener('click', this.onClose)
+    this.menuItems = document.querySelectorAll('.nav-menu-item')
+    this.menuItems.forEach((menuItem) => {
+      menuItem.addEventListener('click', this.onClose)
+
+      if (menuItem.querySelector('.submenu')) {
+        menuItem.addEventListener('mouseenter', this.expand)
+        menuItem.addEventListener('mouseleave', this.collapse)
+      }
     })
 
     return super.init()
@@ -27,8 +32,12 @@ class Nav extends CoreModule {
       toggle.removeEventListener('click', this.onToggle)
     })
 
-    this.closers.forEach((closer) => {
-      closer.removeEventListener('click', this.onClose)
+    this.menuItems.forEach((menuItem) => {
+      menuItem.removeEventListener('click', this.onClose)
+      if (menuItem.querySelector('.submenu')) {
+        menuItem.removeEventListener('mouseenter', this.expand)
+        menuItem.removeEventListener('mouseleave', this.collapse)
+      }
     })
   }
 
@@ -38,6 +47,14 @@ class Nav extends CoreModule {
 
   onClose(event) {
     eventBus.$emit('close-menu', event)
+  }
+
+  expand(event) {
+    event.currentTarget.classList.add('expand')
+  }
+
+  collapse(event) {
+    event.currentTarget.classList.remove('expand')
   }
 
   addEventListeners() {

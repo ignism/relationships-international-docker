@@ -1,6 +1,6 @@
 {% if menu %}
 
-  <ul class="list-reset flex flex-col lg:flex-row">
+  <ul class="list-reset flex {% if isSubMenu %} submenu flex-col{% else %} flex-col lg:flex-row{% endif %}">
 
     {% for item in menu %}
 
@@ -8,7 +8,8 @@
         <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
 
         {% include "components/menu.html.twig" with {
-          "menu" : item.get_children
+          "menu" : item.get_children,
+          "isSubMenu" : true
         } %}
 
       </li>

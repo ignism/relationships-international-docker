@@ -8,6 +8,16 @@
     padding: calc($header-height + $site-offset) $site-offset;
     .nav-menu-item {
       @apply ml-0;
+
+      .submenu .nav-menu-item {
+        overflow: hidden;
+        height: 0;
+        transition: ease $short;
+      }
+      &.expand .submenu .nav-menu-item {
+        overflow: hidden;
+        height: 1.5em;
+      }
     }
   }
 
@@ -63,7 +73,7 @@
   .nav-main {
     .nav-menu {
       @apply relative w-auto h-auto inset-auto flex-row p-0 bg-transparent text-black;
-      .nav-menu-item {
+      ul:not(.submenu) > .nav-menu-item {
         @apply ml-4;
       }
     }

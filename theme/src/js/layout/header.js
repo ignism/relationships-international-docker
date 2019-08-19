@@ -17,6 +17,24 @@ class Header extends CoreModule {
           this.unpin()
         })
       )
+
+      this.events.push(
+        new CoreEvent('scrolled-past-offset', (event) => {
+          if (event.direction === 'FORWARD') {
+            this.hide()
+          } else if (event.direction === 'REVERSE') {
+            this.show()
+          }
+        })
+      )
+
+      this.element.addEventListener('mouseenter', event => {
+        this.element.classList.add('hover')
+      })
+
+      this.element.addEventListener('mouseleave', event => {
+        this.element.classList.remove('hover')
+      })
     } else {
       return { id: this.id, status: false, message: 'no .header-main element' }
     }
@@ -30,6 +48,14 @@ class Header extends CoreModule {
 
   unpin() {
     this.element.classList.remove('pinned')
+  }
+
+  hide() {
+    this.element.classList.add('hidden-on-scroll')
+  }
+
+  show() {
+    this.element.classList.remove('hidden-on-scroll')
   }
 }
 

@@ -5,25 +5,33 @@
 
   {% block header %}
 
-    <nav id="nav-main" class="nav-main flex justify-between items-center" role="navigation">
-      <div class="branding">
-        <a href="{{ site.link }}">
-          <span class="font-bold text-xl uppercase tracking-widest">Branding.</span>
-        </a>
-      </div>
-      
-      <div class="nav-menu text-3xl lg:text-base z-40">
-        {% include "components/menu.html.twig" with {
-          "menu" : menu.get_items
-        } %}
-        <a href="#footer" class="toggle-footer nav-menu-item">footer</a>
-      </div>
+    <nav id="nav-main" class="nav-main" role="navigation">
+      <div class="flex items-start justify-between">
+        <div class="branding">
+          <a href="{{ site.link }}">
+            <span class="font-bold text-xl uppercase tracking-widest">Relationships International</span>
+          </a>
+        </div>
+        
+        <div class="nav-menu text-3xl lg:text-base z-40">
+          {% include "components/menu.html.twig" with {
+            "menu" : menu.get_items,
+            "isSubMenu" : false
+          } %}
+        </div>
 
-      <div class="nav-burger toggle-menu relative z-50">
-        <span></span>
-        <span></span>
+        <div class="nav-burger toggle-menu relative z-50">
+          <span></span>
+          <span></span>
+        </div>
       </div>
-
+      <div class="flex justify-between items-center">
+        <ul class="flex justify-start breadcrumps">
+          <li>home</li>
+          <li>about us</li>
+          <li>workshops</li>
+        </ul>
+      </div>
     </nav>
 
   {% endblock %}
