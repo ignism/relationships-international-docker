@@ -2,28 +2,31 @@
 
   {% if isSubMenu %}
     <div class="submenu-anchor relative">
-      <ul class="placeholder-menu relative">
-          {% for item in menu %}
-            <li class="placeholder-item">{{ loop.index }}</li>
-          {% endfor %}
+
+      <ul class="flex flex-col placeholder-menu overflow-x-hidden" style="width: 16px">
+
+        {% for item in menu %}
+
+          <li class="placeholder-item">
+            <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+          </li>
+
+        {% endfor %}
+
       </ul>
+
       <ul class="flex submenu absolute top-0 left-0 flex-col">
 
         {% for item in menu %}
 
           <li class="nav-menu-item close-menu always-expand">
             <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
-
-            {% include "components/menu.html.twig" with {
-              "menu" : item.get_children,
-              "isSubMenu" : true
-            } %}
-
           </li>
 
         {% endfor %}
 
       </ul>
+
     </div>
 
   {% else %}

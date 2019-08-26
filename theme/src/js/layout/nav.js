@@ -1,3 +1,4 @@
+import anime from 'animejs'
 import { eventBus } from '../core'
 import { CoreModule } from '../core/core-module'
 import { CoreEvent } from '../core/core-event'
@@ -5,6 +6,22 @@ import { CoreEvent } from '../core/core-event'
 class Nav extends CoreModule {
   init(options) {
     this.element = options.element
+
+    this.navMenu = this.element.querySelector('.nav-menu')
+
+    this.navMenu.addEventListener('mouseenter', this.mouseEnter)
+    this.navMenu.addEventListener('mouseleave', this.mouseLeave)
+
+    let submenus = this.element.querySelectorAll('.submenu')
+    this.biggestSubmenu = false
+    let count = 0
+    submenus.forEach(submenu => {
+      if (submenu.childElementCount > count) {
+        count = submenu.childElementCount
+        this.biggestSubmenu = submenu
+      }
+    })
+
     this.addEventListeners()
 
     this.toggles = document.querySelectorAll('.toggle-menu')
@@ -28,6 +45,9 @@ class Nav extends CoreModule {
   destroy() {
     super.destroy()
 
+    this.element.removeEventListener('mouseenter', this.mouseEnter)
+    this.element.removeEventListener('mouseleave', this.mouseLeave)
+
     this.toggles.forEach((toggle) => {
       toggle.removeEventListener('click', this.onToggle)
     })
@@ -39,6 +59,14 @@ class Nav extends CoreModule {
         menuItem.removeEventListener('mouseleave', this.collapse)
       }
     })
+  }
+
+  mouseEnter(event) {
+    event.currentTarget.classList.add('hover')
+  }
+
+  mouseLeave(event) {
+    event.currentTarget.classList.remove('hover')
   }
 
   onToggle(event) {
