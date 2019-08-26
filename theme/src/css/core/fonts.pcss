@@ -2,6 +2,24 @@ h1 {
   @apply text-4xl;
 }
 
+.title {
+  height: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.article-title {
+  margin-bottom: 0.5em;
+}
+
+.subtitle {
+  margin-bottom: 0.5em;
+}
+
+.intro {
+  @apply text-2xl leading-none;
+  margin: 0.5em 0;
+}
+
 h2 {
   @apply text-3xl;
 }
@@ -11,11 +29,25 @@ h3 {
 }
 
 h1, h2, h3 {
-  @apply leading-tight font-bold tracking-wide;
-  margin-bottom: 0.5em;
+  @apply leading-tight font-bold;
 }
 
 p {
-  @apply leading-normal mb-1;
+  @apply leading-normal;
   max-width: 40em;
+}
+
+.wysiwyg {
+  h3, p:not(:last-of-type) {
+    @apply font-normal mb-4
+  }
+}
+
+.therapists-wysiwyg {
+  h3, p:not(:last-of-type) {
+    @apply font-normal mb-4
+  }
+  li {
+    @apply my-4;
+  }
 }

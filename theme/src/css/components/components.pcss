@@ -1,6 +1,6 @@
 button,
 .button {
-    @apply px-4 py-2 bg-gray-400 mt-4;
+    @apply px-4 py-2 bg-gray mt-4;
     transition: $short easeOutCirc;
     
     &:hover {
@@ -9,9 +9,30 @@ button,
     }
 
     &:focus {
-        @apply bg-gray-600;
         outline: none;
         box-shadow: none;
         transform: translateY(0);
     }
+}
+
+.quote {
+  .name {
+    margin-left: 1em;
+  }
+  .name::before {
+    @apply absolute border-white border-b-2;
+    width: 0.9em;
+    margin-left: -1em;
+    margin-top: 0.625em;
+    content: '';
+  }
+}
+
+.quoted {
+  &::before {
+    content: "\201C";
+  }
+  &::after {
+    content: "\201D";
+  }
 }

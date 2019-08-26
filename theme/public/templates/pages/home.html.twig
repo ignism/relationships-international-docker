@@ -1,0 +1,195 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% set main_class = ['header-offset'] %}
+
+{% block main %}
+  <section class="text-4xl text-white font-display font-bold">
+    <div class="swiper-container h-full">
+      <div class="swiper-wrapper">
+
+        {% for slide in post.meta("header_slider") %}
+
+          <div class="swiper-slide section" style="height: 5em; background-size: cover; background-image: url(https://images.unsplash.com/photo-1552084117-56a987666449?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80)">
+            <div class="container h-full flex items-start">
+              <div class="row w-full">
+                <div class="col w-10/12 mx-1/12">
+                  <p class="max-w-4xl leading-tight">
+                    {{ slide.slide_text }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col w-4/12 ml-1/12">
+          <div class="flex items-end mb-8">
+            <div class="flex-schrink mr-4">
+              <img src="{{ theme.link }}/images/couples.svg" alt="">
+            </div>
+            <div class="flex-grow">
+              <h3 class="text-xl font-bold">Couples</h3>
+            </div>
+          </div>
+          <p>
+            {{ post.meta('therapy').couples }}
+          </p>
+        </div>
+
+        <div class="col w-4/12 ml-2/12 mr-1/12">
+          <div class="flex items-end mb-8">
+            <div class="flex-schrink mr-4">
+              <img src="{{ theme.link }}/images/individuals.svg" alt="">
+            </div>
+            <div class="flex-grow">
+              <h3 class="text-xl font-bold">Individuals</h3>
+            </div>
+          </div>
+          <p>
+            {{ post.meta('therapy').individuals }}
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {% include "components/quote.html.twig" with {
+    quote : post.meta("quote_1").text,
+    name: post.meta("quote_1").name
+  } %}
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col w-4/12 ml-1/12">
+          <div class="flex items-end mb-8">
+            <div class="flex-schrink mr-4">
+              <img src="{{ theme.link }}/images/professionals.svg" alt="">
+            </div>
+            <div class="flex-grow">
+              <h3 class="text-xl font-bold">Professionals</h3>
+            </div>
+          </div>
+          <p>
+            {{ post.meta('professionals') }}
+          </p>
+        </div>
+
+        <div class="col w-5/12 ml-1/12 mr-1/12">
+          <div class="flex flex-wrap h-full text-white text-xl font-medium leading-tight">
+            <div class="ml-2/12 w-6/12 min-h-4/12 bg-blue">
+              <a href="#" class="hover:no-underline">
+                <div class="h-full flex flex-col items-center justify-center">
+                  <div>Gottman</div>
+                  <div class="underline">Level 1</div>
+                </div>
+              </a>
+            </div>
+            <div class="ml-4/12 w-6/12 min-h-4/12 bg-blue-dark">
+              <a href="#" class="hover:no-underline">
+                <div class="h-full flex flex-col items-center justify-center">
+                  <div>Gottman</div>
+                  <div class="underline">Level 2</div>
+                </div>
+              </a>
+            </div>
+            <div class="ml-1/12 w-6/12 min-h-4/12 bg-blue-darker">
+              <a href="#" class="hover:no-underline">
+                <div class="h-full flex flex-col items-center justify-center">
+                  <div>Gottman</div>
+                  <div class="underline">Level 3</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {% include "components/separator.html.twig" %}
+
+  <section class="section -mt-32">
+    <div class="container">
+      <div class="row">
+        <div class="col w-3/12 ml-1/12">
+          <h1 class="font-display text-brown mt-32">
+            Meet the<br>therapists
+          </h1>
+        </div>
+
+        {% for item in post.meta("therapists") %}
+          <div class="col w-3/12 mr-1/12">
+            <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
+              <div class="pt-8">
+                <div class="leading-normal font-bold">{{ item.name }}</div>
+                <div class="leading-normal font-bold">{{ item.degree }}</div>
+                <div class="leading-normal ">Relationships International<br>{{ item.location }}</div>
+                <div class="leading-tight text-brown text-right">
+                  <a class="border-b border-brown" href="#">
+                    Read More
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section>
+
+    {% include "components/quote.html.twig" with {
+      quote : post.meta("quote_2").text,
+      name: post.meta("quote_2").name
+    } %}
+
+    <section class="pt-24 pb-8">
+      <div class="container">
+        <div class="swiper-container h-full">
+          <div class="swiper-wrapper pb-32">
+
+            {% for slide in 1..3 %}
+
+              <div class="swiper-slide">
+                <div class="h-full flex items-start">
+                  <div class="flex w-full">
+                    <div class="w-4/12 mx-auto">
+                      <p class="quoted text-center leading-tight text-4xl">Love Lab Predicts Marital Outcome</p>
+                      <p class="text-center text-brown leading-tight text-3xl pt-12 pb-6">BBC</p>
+                      <p class="text-center text-brown leading-tight text-xl">
+                        <a class="border-b border-brown" href="#">view more</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            {% endfor %}
+
+          </div>
+          <div class="swiper-pagination brown"></div>
+        </div>
+      </div>
+    </section>
+
+    {% include "components/cta-footer.html.twig" with {
+      text: post.meta('page_footer')
+    } %}
+
+  {% endblock %}

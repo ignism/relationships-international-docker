@@ -1,21 +1,49 @@
 {% if menu %}
 
-  <ul class="list-reset flex {% if isSubMenu %} submenu flex-col{% else %} flex-col lg:flex-row{% endif %}">
+  {% if isSubMenu %}
+    <div class="submenu-anchor relative">
+      <ul class="placeholder-menu relative">
+          {% for item in menu %}
+            <li class="placeholder-item">{{ loop.index }}</li>
+          {% endfor %}
+      </ul>
+      <ul class="flex submenu absolute top-0 left-0 flex-col">
 
-    {% for item in menu %}
+        {% for item in menu %}
 
-      <li class="nav-menu-item close-menu">
-        <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+          <li class="nav-menu-item close-menu always-expand">
+            <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
 
-        {% include "components/menu.html.twig" with {
-          "menu" : item.get_children,
-          "isSubMenu" : true
-        } %}
+            {% include "components/menu.html.twig" with {
+              "menu" : item.get_children,
+              "isSubMenu" : true
+            } %}
 
-      </li>
+          </li>
 
-    {% endfor %}
+        {% endfor %}
 
-  </ul>
+      </ul>
+    </div>
+
+  {% else %}
+    <ul class="list-reset flex flex-col lg:flex-row">
+
+      {% for item in menu %}
+
+        <li class="nav-menu-item close-menu always-expand">
+          <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+
+          {% include "components/menu.html.twig" with {
+            "menu" : item.get_children,
+            "isSubMenu" : true
+          } %}
+
+        </li>
+
+      {% endfor %}
+
+    </ul>
+  {% endif %}
 
 {% endif %}

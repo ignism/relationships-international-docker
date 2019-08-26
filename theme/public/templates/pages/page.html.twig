@@ -1,4 +1,4 @@
-{# Sample page #}
+{# Modular page #}
 
 {% extends "core/base.html.twig" %}
 
@@ -6,66 +6,22 @@
 
 {% block main %}
 
-  {% embed "layout/section.html.twig" %}
-
-    {% block section %}
-
+  <section class="pt-12">
+    <div class="container">
       <div class="row">
-        <div class="col w-full md:w-10/12 lg:w-8/12 xl:w-6/12">
-          
-            <h1 class="anime-slide-in">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </h1>
-
-          <h2 class="mt-20">{{ post.title }}</h2>
-          <p>{{ post.content }}</p>
+        <div class="col w-6/12 ml-1/12">
+            <h1>{{ post.meta('page_title') }}</h1>
         </div>
       </div>
+    </div>
+  </section>
 
-    {% endblock %}
+  {% include "components/flexible-content.html.twig" with {
+    flexible_content: post.meta('flexible_content')
+  } %}
 
-  {% endembed %}
-
-  {% embed "layout/section.html.twig" %}
-
-    {% block section %}
-
-      <div class="row">
-        <div class="col w-full md:w-10/12 lg:w-8/12 xl:w-6/12">
-          
-            <h1 class="anime-slide-in">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </h1>
-
-          <h2 class="mt-20">{{ post.title }}</h2>
-          <p>{{ post.content }}</p>
-        </div>
-      </div>
-
-    {% endblock %}
-
-  {% endembed %}
-
-
-{% embed "layout/section.html.twig" %}
-
-    {% block section %}
-
-      <div class="row">
-        <div class="col w-full md:w-10/12 lg:w-8/12 xl:w-6/12">
-          
-            <h1 class="anime-slide-in">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </h1>
-
-          <h2 class="mt-20">{{ post.title }}</h2>
-          <p>{{ post.content }}</p>
-        </div>
-      </div>
-
-    {% endblock %}
-
-  {% endembed %}
-
+  {% include "components/cta-footer.html.twig" with {
+    text: post.meta('page_footer')
+  } %}
 
 {% endblock %}

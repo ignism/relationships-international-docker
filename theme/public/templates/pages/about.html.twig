@@ -1,0 +1,65 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% set main_class = ['header-offset'] %}
+
+{% block main %}
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col w-6/12 ml-1/12">
+          <h1>{{ post.meta('page_title') }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "components/flexible-content.html.twig" with {
+    flexible_content: post.meta('flexible_content')
+  } %}
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col w-6/12 ml-1/12">
+          <h1>Meet the therapists</h1>
+        </div>
+      </div>
+
+      
+      {% for item in post.meta('therapists') %}
+
+      <div class="row mt-12">
+        <div class="col w-3/12 mx-1/12">
+          <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
+        </div>
+
+        <div class="col w-6/12">
+          <h3>
+            {{ item.name }} {{ item.degree }}<br>
+            Relationships International {{ item.location }}
+          </h3>
+          <p class="my-8">
+            {{ item.bio }}
+          </p>
+          <p>
+            T {{ item.phone }}<br>
+            E <a class="underline" href="mailto:{{ item.email }}">{{ item.email }}</a>
+          </p>
+          {% if item.name == 'Julie Sharon-Wagschal' %}
+          <p class="mt-8 text-brown">
+            <a class="underline" href="">Read More</a>
+          </p>
+          {% endif %}
+          
+        </div>
+      </div>
+        
+      {% endfor %}
+      
+    </div>
+  </section>
+
+{% endblock %}

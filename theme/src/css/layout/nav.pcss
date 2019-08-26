@@ -2,21 +2,33 @@
   @apply relative;
 
   .nav-menu {
-    @apply fixed w-full h-screen flex flex-col bg-gray-600 text-white;
+    @apply fixed w-full h-screen flex flex-col bg-gray text-white font-medium;
     top: 0;
     left: 100vw;
     padding: calc($header-height + $site-offset) $site-offset;
     .nav-menu-item {
       @apply ml-0;
 
-      .submenu .nav-menu-item {
+      .submenu .nav-menu-item,
+      .placeholder-menu .placeholder-item {
         overflow: hidden;
         height: 0;
         transition: ease $short;
+        white-space: nowrap;
+        opacity: 0;
       }
+
+      .placeholder-menu .placeholder-item {
+        visibility: hidden;
+      }
+
+      &.always-expando .submenu .nav-menu-item,
+      &.expand .placeholder-menu .placeholder-item,
       &.expand .submenu .nav-menu-item {
-        overflow: hidden;
-        height: 1.5em;
+        overflow: visible;
+        height: 2em;
+        line-height: 2em;
+        opacity: 1;
       }
     }
   }

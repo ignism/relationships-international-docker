@@ -2,55 +2,53 @@
 
 <div class="footer-wrapper relative">
 
-  {% embed "layout/section.html.twig" with {
-    section_tag : "footer",
-    section_class: ['footer-main', 'bg-gray-900', 'text-gray-200', 'z-50']
-  } %}
+  <footer class="section footer-main bg-gray text-white z-50">
+    <div class="container">
 
-    {% block footer %}
+      <div class="row">
+        <div class="col w-4/12 ml-1/12">
+          <p class="font-display font-bold text-4xl my-6">Amsterdam</p>
+          <p class="font-bold">Relationships International - Amsterdam</p>
+          <p>Julie Sharon-Wagschal</p>
+          <ul class="py-4">
+            <li>T 06 451 803 42</li>
+            <li>E amsterdam@relationshipsinternational.nl</li>
+          </ul>
+            <p>Groot Blankenberg 56<br>1082 AD Amsterdam</p>
+          <p class="py-4">
+            The practice can be reached with tram 5 and 51, and bus 62. IMPORTANT: Street parking is 1.40 euro per hour.
+            Parking machines are located around the corner.
+          </p>
+        </div>
 
-      <div class="absolute inset-0 container">
-        <div class="flex justify-end">
-          <div class="btn-close toggle-footer">
-            <span></span>
+        <div class="col w-4/12 ml-1/12">
+          <p class="font-display font-bold text-4xl my-6">The Hague</p>
+          <p class="font-bold">Relationships International - Amsterdam</p>
+          <p>Julie Sharon-Wagschal</p>
+          <ul class="py-4">
+            <li>T 06 451 803 42</li>
+            <li>E amsterdam@relationshipsinternational.nl</li>
+          </ul>
+            <p>Groot Blankenberg 56<br>1082 AD Amsterdam</p>
+          <p class="py-4">
+            The practice can be reached with tram 9,bus 22.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col w-11/12 ml-1/12 flex justify-between items-end">
+          <p class="opacity-50">
+            Relationships International ©2019<br>
+            Design: Studio of Things
+          </p>
+          <div style="width: 200px">
+            <img src="{{ theme.link }}/images/logo-white.svg" alt="">
           </div>
         </div>
       </div>
-      {% if footer_widget %}
 
-        <h1 class="mb-4 text-4xl font-bold">Contact us</h1>
-        <div class="flex mb-4">
-          <div class="mr-2 text-gray-600">T</div>
-          <div>
-            <p>+31 6 12345678</p>
-          </div>
-        </div>
-        <div class="flex mb-4">
-          <div class="mr-2 text-gray-600">E</div>
-          <div>
-            <p>hello@mail.com</p>
-          </div>
-        </div>
-        <div class="flex mb-8">
-          <div class="mr-2 text-gray-600">A</div>
-          <div>
-            <p>Torenallee 72-50<br>5617 Bd Eindhoven</p>
-          </div>
-        </div>
-
-        {# <p>{{ footer_widget.footer_text }}</p> #}
-        <p class="text-gray-600">&copy;
-          {{ "now"|date("Y") }}</p>
-
-      {% else %}
-
-        <p>&copy;
-          {{ "now"|date("Y") }}</p>
-
-      {% endif %}
-
-    {% endblock %}
-
-  {% endembed %}
+    </div>
+  </footer>
 
 </div>

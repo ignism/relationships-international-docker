@@ -1,12 +1,26 @@
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['Inter', 'sans-serif'],
+      sans: ['BasisGrotesquePro', 'sans-serif'],
+      display: ['GTSuperDisplay', 'serif'],
+    },
+    lineHeight: {
+      none: 0,
+      tight: 1.2,
+      normal: 1.4
     },
     extend: {
       colors: {
         black: '#0c0c0c',
         white: '#f9f9f9',
+        brown: '#C1A67F',
+        blue: '#BFE3ED',
+        'blue-dark': '#AAD7E4',
+        'blue-darker': '#90CCDD',
+        red: '#FFBB9B',
+        green: '#97D88A',
+        yellow: '#FFD591',
+        gray: '#939598'
       },
       spacing: {
         '1/12': '8.33333%',

@@ -1,0 +1,55 @@
+{# Sample page #}
+
+{% extends "core/base.html.twig" %}
+
+{% set main_class = ['header-offset'] %}
+
+{% block main %}
+
+  <section class="pt-12">
+    <div class="container">
+      <div class="row">
+        <div class="col w-6/12 ml-1/12">
+          <h1>Couples<br>Workshops</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row flex-wrap">
+
+        {% for post in posts %}
+          {% if locale == post.id|get_post_lang %}
+
+            <div class="col ml-5/12 w-6/12">
+              <article class="index-{{ loop.index }}">
+                <h2 class="text-blue font-medium">
+                  {{ post.title }}
+                </h2>
+                <h3 class="font-normal">
+                  Workshop
+                </h3>
+                <p class="mt-8 mb-4">
+                  {{ post.meta('summary') }}
+                </p>
+                <p class="text-blue text-right">
+                  <a class="underline" href="{{ post.link }}">Read more</a>
+                </p>
+              </article>
+            </div>
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  {% include "components/cta-footer.html.twig" with {
+    text: post.meta('page_footer')
+  } %}
+
+{% endblock %}

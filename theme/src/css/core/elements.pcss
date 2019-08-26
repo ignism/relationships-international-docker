@@ -11,6 +11,8 @@ a:visited {
   color: inherit;
 }
 
-a:hover {
-  @apply underline;
+article {
+  &:not(.index-1) {
+    @apply mt-8 pt-8 border-t border-black;
+  }
 }

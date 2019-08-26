@@ -7,13 +7,13 @@
 
     <nav id="nav-main" class="nav-main" role="navigation">
       <div class="flex items-start justify-between">
-        <div class="branding">
+        <div class="branding mb-4" style="width: 200px;">
           <a href="{{ site.link }}">
-            <span class="font-bold text-xl uppercase tracking-widest">Relationships International</span>
+            <img src="{{ theme.link }}/images/logo-black.svg" alt="">
           </a>
         </div>
         
-        <div class="nav-menu text-3xl lg:text-base z-40">
+        <div class="nav-menu text-3xl lg:text-base z-40" style="padding-top: 44px">
           {% include "components/menu.html.twig" with {
             "menu" : menu.get_items,
             "isSubMenu" : false

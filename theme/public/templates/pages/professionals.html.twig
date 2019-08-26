@@ -1,0 +1,53 @@
+{% extends "core/base.html.twig" %}
+
+{% set main_class = ['header-offset'] %}
+
+{% block main %}
+
+  <section class="pt-12">
+    <div class="container">
+      <div class="row">
+        <div class="col w-6/12 ml-1/12">
+          <h1>Gottman Method<br>couples therapy</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col w-8/12 ml-3/12">
+
+          <h2 class="font-display font-bold leading-tight text-blue">
+            {{ post.meta('summary') }}
+          </h2>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col w-3/12 mx-1/12">
+          <h1>{{ post.meta('level') }}</h1>
+        </div>
+
+        <div class="col w-6/12">
+          <h3 class="text-brown font-normal">{{ post.meta('details') }}</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "components/flexible-content.html.twig" with {
+    flexible_content: post.meta('flexible_content')
+  } %}
+
+  {% include "components/cta-footer.html.twig" with {
+    text: post.meta('page_footer')
+  } %}
+
+{% endblock %}

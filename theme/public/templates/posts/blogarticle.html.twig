@@ -1,0 +1,43 @@
+{% extends "core/base.html.twig" %}
+
+{% set main_class = ['header-offset'] %}
+
+{% block main %}
+
+  <section class="pt-12">
+    <div class="container">
+      <div class="row">
+        <div class="col w-3/12 mx-1/12 relative">
+          <div class="absolute top-0 left-0 right-0 text-blue">
+            <p class="underline mb-8">
+              Blog Articles
+            </p>
+
+            <ul>
+              {% for item in blog_articles %}
+                <li class="mb-2">
+                  <a href="{{ item.link }}">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+
+          </div>
+        </div>
+        <div class="col w-6/12">
+          <h2 class="text-blue font-medium">
+            {{ post.title }}
+          </h2>
+          <h3 class="font-normal">
+            By
+            {{ post.meta('author') }}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% include "components/flexible-content.html.twig" with {
+    flexible_content: post.meta('flexible_content')
+  }  %}
+
+{% endblock %}

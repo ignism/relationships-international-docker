@@ -1,0 +1,37 @@
+{% extends "core/base.html.twig" %}
+
+{% set main_class = ['header-offset'] %}
+
+{% block main %}
+
+  <section class="pt-12">
+    <div class="container">
+      <div class="row">
+        <div class="col w-6/12 ml-1/12">
+          <h1>Therapist information</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% for item in post.meta('therapists') %}
+    <section class="section">
+      <div class="container">
+      <div class="row flex-wrap">
+      <div class="col w-3/12 mx-1/12">
+        <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
+      </div>
+      <div class="col w-5/12 therapists-wysiwyg">
+        <h3 class="font-normal">{{ item.name }}</h3>
+        {{ item.details }}
+      </div>
+      </div>
+      </div>
+    </section>
+  {% endfor %}
+
+  {% include "components/cta-footer.html.twig" with {
+    text: post.meta('page_footer')
+  } %}
+
+{% endblock %}

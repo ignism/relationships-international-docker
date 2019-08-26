@@ -1,38 +1,43 @@
 {# Default page #}
 
+{% import "core/macros.html.twig" as macros %}
+
 {% extends "core/base.html.twig" %}
 
 {% block main %}
 
-  {% embed "layout/section.html.twig" with { 
-    section_class: ['bg-gray-400', 'h-screen']
-  } %}
+  <section class="section header-offset">
+    <div class="container">
 
-    {% block section %}
+      {{ macros.title('Gottman Method<br>marathon therapy') }}
 
-      <div class="hero header-offset">
-        <h1>{{ site.title }}</h1>
-      </div>
+      {{ macros.intro('We offer practical therapy that helps couples learn how to keep conflict discussions calm, to break out of habits that lead to conflict, to generate greater understanding and to increase respect, affection and closeness.', 'blue') }}
 
-    {% endblock %}
+      {{ macros.subtitle('When is marathon couples therapy not suitable?') }}
 
-  {% endembed %}
+      {{ macros.text('', true) }}
+       
+    </div>
+  </section>
 
+  {% include "components/separator.html.twig" %}
 
-  {% for post in posts %}
+  <section class="section">
+    <div class="container">
 
-    {% embed "layout/section.html.twig" %}
+      {{ macros.subtitle('When is marathon couples therapy not suitable?') }}
 
-      {% block section %}
+      {{ macros.text('', true) }}
 
-        <a href="{{ post.link }}">
-          <h2>{{ post.title }}</h2>
-        </a>
+    </div>
+  </section>
 
-      {% endblock %}
+  {% include "components/quote.html.twig" %}
 
-    {% endembed %}
+  {% include "components/excerpt.html.twig" with { color: 'brown' } %}
+  {% include "components/excerpt.html.twig" with { color: 'blue' } %}
+  {% include "components/excerpt.html.twig" with { color: 'red' } %}
 
-  {% endfor %}
+  {% include "components/cta-footer.html.twig" %}
 
 {% endblock %}

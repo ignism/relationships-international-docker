@@ -1,0 +1,63 @@
+{% macro title(text) %}
+  <div class="row">
+    <div class="col w-10/12 ml-1/12 mr-1/12">
+      <h1 class="title">
+        {{ text }}
+      </h1>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro heading(text, color) %}
+  <div class="row">
+    <div class="col w-6/12 ml-5/12 mr-1/12">
+      <h2 class="heading text-{{ color }}">
+        {{ text }}
+      </h2>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro subtitle(text) %}
+  <div class="row">
+    <div class="col w-6/12 ml-5/12 mr-1/12">
+      <h3 class="subtitle">
+        {{ text }}
+      </h3>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro intro(text, color) %}
+  <div class="row">
+    <div class="col w-8/12 ml-3/12 mr-1/12">
+      <p class="intro text-{{ color }}">
+        {{ text }}
+      </p>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro text(text, isRich) %}
+  <div class="row">
+    <div class="col w-6/12 ml-5/12 mr-1/12">
+    {% if isRich %}
+      {# text start #}
+      <p>Marathon couples therapy may not be suitable under the following circumstances.</p>
+      <ul>
+        <li>From either partner’s perspective, a partner is struggling with an alcohol or drug addiction.</li>
+        <li>There is violence in your relationship, threats that violence might occur, or fear of such violence.</li>
+        <li>Either partner currently has an untreated major mental illness (for example, schizophrenia, recurrent psychotic depression, or bipolar/manic-depressive illness).</li>
+        <li>Either partner is currently experiencing suicidal or homicidal thoughts, or has a history of serious harm inflicted on him/ herself or another person.</li>
+        <li>If there is an undisclosed, ongoing extramarital affair that you are not willing to disclose. Keeping such secrets interferes with marital therapy.</li>
+      </ul>
+      {# text end #}    
+    {% else %}
+      <p>
+        {{ text }}
+      </p>
+    {% endif %}
+  
+    </div>
+  </div>
+{% endmacro %}

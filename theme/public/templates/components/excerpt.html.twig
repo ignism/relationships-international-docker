@@ -1,0 +1,17 @@
+{% import "core/macros.html.twig" as macros %}
+
+<section class="section">
+  <div class="container">
+
+    {{ macros.heading('BBC', color) }}
+    {{ macros.subtitle('Love Lab Predicts Marital Outcome') }}
+    {{ macros.text('Psychologist John Gottman and applied mathematicians James Murray and Kristin Swanson claim their predictions have 94% accuracy — and this after viewing just the first few moments of a conversation about an area of marital contention. Psychologist John Gottman and applied mathematicians James Murray and Kristin Swanson claim their predictions have 94% accuracy — and this after viewing just the first few moments of a conversation about an area of marital contention.'|limit_words, false) }}
+
+    <div class="row">
+      <div class="col w-6/12 ml-5/12 flex justify-end text-{{ color }}">
+        <a href="#" class="">Read More</a>
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,40 +1,47 @@
 .header-offset {
-  padding-top: 120px;
+  padding-top: 134px;
 }
 
 .header-main {
-  @apply bg-transparent fixed w-full flex items-center;
-  padding-bottom: calc($site-offset / 2);
-  padding-top: calc($site-offset * 2);
+  @apply bg-white fixed w-full flex items-center;
+  padding-bottom: 0;
+  padding-top: $site-offset;
   transition: $short ease;
   top: 0;
   
+  .breadcrumps {
+  @apply w-full py-2 border-black border-t;
+  li {
+    @apply ml-2 capitalize;
 
-  &.pinned {
-    @apply bg-white;
-    padding-top: $site-offset;
-    &.hidden-on-scroll {
-      top: -60px;
-      padding-bottom: calc($site-offset / 4);
-      &.hover {
-        top: 0;
+    &:first-child {
+      @apply ml-0;
+    }
+    &:last-child {
+      @apply text-brown;
+    }
+
+    &:not(:last-child) {
+      &::after {
+        @apply ml-2;
+        content: ">";
       }
     }
   }
 }
 
-.breadcrumps {
-  li {
-    @apply ml-4;
+  &.pinned {
+    @apply bg-white;
+    padding-top: $site-offset;
+    &.hidden-on-scroll {
+      top: -105px;
 
-    &:first-child {
-      @apply ml-0;
-    }
+      &:not(.hover) .breadcrumps {
+        @apply border-0;
+      }
 
-    &:not(:last-child) {
-      &::after {
-        @apply ml-4;
-        content: ">";
+      &.hover {
+        top: 0;
       }
     }
   }

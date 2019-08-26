@@ -105,12 +105,36 @@ class RelationshipsInternational extends Timber\Site
         $context['menu'] = new Timber\Menu();
         $context['site'] = $this;
 
+        $context['locale'] = get_locale();
+
+        $args = array(
+          'post_type' => 'blogarticle'
+        );
+        $context['blog_articles'] = Timber::get_posts($args);
+
         return $context;
     }
 
     public function timmy_sizes($sizes)
     {
         return array(
+            'preview' => array(
+                'resize' => array(240),
+                'sizes' => '240px',
+                'oversize' => array(
+                  'allow' => false,
+                  'style_attr' => false,
+                ),
+            ),
+            'portrait-30vw' => array(
+                'resize' => array(600, 800),
+                'srcset' => array(0.5, 2, 3),
+                'sizes' => '30vw',
+                'oversize' => array(
+                    'allow' => false,
+                    'style_attr' => false,
+                ),
+            ),
             'portrait-50vw' => array(
                 'resize' => array(800, 1200),
                 'srcset' => array(0.5, 2, 3),
@@ -168,7 +192,8 @@ class RelationshipsInternational extends Timber\Site
     public function add_to_twig($twig)
     {
         $twig->addExtension(new Twig_Extension_StringLoader());
-        $twig->addFilter(new Twig_SimpleFilter('my_filter', array($this, 'my_filter')));
+        $twig->addFilter(new Twig_SimpleFilter('limit_words', array($this, 'limit_words')));
+        $twig->addFilter(new Twig_SimpleFilter('get_post_lang', array($this, 'get_post_lang')));
 
         return $twig;
     }
@@ -177,11 +202,23 @@ class RelationshipsInternational extends Timber\Site
      *
      * @param string $text being 'foo', then returned 'foo bar!'
      */
-    public function my_filter($text)
+    public function limit_words($text)
     {
-        $text .= ' bar!';
+      $limit = 50;
+      if (str_word_count($text, 0) > $limit) {
+          $words = str_word_count($text, 2);
+          $pos = array_keys($words);
+          $text = substr($text, 0, $pos[$limit]) . '...';
+      }
+      return $text;
+    }
 
-        return $text;
+    public function get_post_lang($post_id)
+    {
+
+      $lang = pll_get_post_language($post_id, 'locale');
+
+      return $lang;
     }
 }
 new RelationshipsInternational();

@@ -13,14 +13,14 @@
  * @since   Timber 0.1
  */
 
-$templates = array( 'index.html.twig' );
+// $templates = array( 'index.html.twig' );
 
-$context = Timber::get_context();
-$context['posts'] = new Timber\PostQuery();
-$context['foo'] = 'bar';
+// $context = Timber::get_context();
+// $context['posts'] = new Timber\PostQuery();
 
-if (is_front_page()) {
-    $context['page'] = new TimberPost();
-}
+$context = Timber::context();
+$context['post'] = new Timber\Post();
 
-Timber::render( $templates, $context );
+$templates = array( 'pages/page.html.twig' );
+
+Timber::render($templates, $context);
