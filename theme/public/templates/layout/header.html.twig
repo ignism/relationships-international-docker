@@ -1,39 +1,33 @@
-{% embed "layout/section.html.twig" with {
-  section_tag : "header",
-  section_class: ['header-main', 'header-unpin', 'z-50']
-} %}
+  <header class="header-main header-unpin z-50">
+    <nav id="nav-main" class="nav-main relative w-full" role="navigation">
+      <div class="container">
+        <div class="relative flex items-start justify-between">
+          <div class="absolute inset-0 border-b border-black" style="max-height: 76px; z-index: -1"></div>
+          <div class="branding mb-4" style="width: 200px;">
+            <a href="{{ site.link }}">
+              <img src="{{ theme.link }}/images/logo-black.svg" alt="">
+            </a>
+          </div>
 
-  {% block header %}
+          <div class="nav-menu text-3xl lg:text-base z-40" style="padding-top: 44px">
+            {% include "components/menu.html.twig" with {
+              "menu" : menu.get_items,
+              "isSubMenu" : false
+            } %}
+          </div>
 
-    <nav id="nav-main" class="nav-main" role="navigation">
-      <div class="flex items-start justify-between">
-        <div class="branding mb-4" style="width: 200px;">
-          <a href="{{ site.link }}">
-            <img src="{{ theme.link }}/images/logo-black.svg" alt="">
-          </a>
-        </div>
-        
-        <div class="nav-menu text-3xl lg:text-base z-40" style="padding-top: 44px">
-          {% include "components/menu.html.twig" with {
-            "menu" : menu.get_items,
-            "isSubMenu" : false
-          } %}
-        </div>
-
-        <div class="nav-burger toggle-menu relative z-50">
-          <span></span>
-          <span></span>
+          <div class="nav-burger toggle-menu relative z-50">
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
-      <div class="flex justify-between items-center">
-        <ul class="flex justify-start breadcrumps">
-          <li>home</li>
-          <li>about us</li>
-          <li>workshops</li>
-        </ul>
+
+      <div class="absolute w-full bg-white" style="top:80px">
+        <div class="container">
+          <ul class="flex justify-start breadcrumps"></ul>
+        </div>
       </div>
+
     </nav>
-
-  {% endblock %}
-
-{% endembed %}
+  </header>

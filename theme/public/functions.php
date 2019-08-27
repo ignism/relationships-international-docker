@@ -42,6 +42,11 @@ class RelationshipsInternational extends Timber\Site
         add_action('admin_enqueue_scripts', array( $this, 'load_admin_scripts' ));
         add_action('wp_enqueue_scripts', array( $this, 'load_scripts' ));
         add_filter('get_twig', array($this, 'add_to_twig'));
+        add_action( 'init', function() {
+          remove_post_type_support( 'post', 'editor' );
+          remove_post_type_support( 'page', 'editor' );
+        }, 99);
+	
         parent::__construct();
     }
 

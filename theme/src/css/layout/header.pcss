@@ -1,40 +1,40 @@
 .header-offset {
-  padding-top: 134px;
+  padding-top: 157px;
 }
 
 .header-main {
   @apply bg-white fixed w-full flex items-center;
   padding-bottom: 0;
-  padding-top: $site-offset;
+  padding-top: 33px;
   transition: $short ease;
   top: 0;
   
   .breadcrumps {
-  @apply w-full py-2 border-black border-t;
-  li {
-    @apply ml-2 capitalize;
+    @apply w-full py-2;
+    li {
+      @apply ml-2 capitalize;
 
-    &:first-child {
-      @apply ml-0;
-    }
-    &:last-child {
-      @apply text-brown;
-    }
+      &:first-child {
+        @apply ml-0;
+      }
+      &:last-child {
+        @apply text-brown;
+      }
 
-    &:not(:last-child) {
-      &::after {
-        @apply ml-2;
-        content: ">";
+      &:not(:last-child) {
+        &::after {
+          @apply ml-2;
+          content: ">";
+        }
       }
     }
   }
-}
 
   &.pinned {
     @apply bg-white;
     padding-top: $site-offset;
     &.hidden-on-scroll {
-      top: -105px;
+      top: -112px;
 
       &:not(.hover) .breadcrumps {
         @apply border-0;

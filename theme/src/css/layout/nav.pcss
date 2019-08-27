@@ -8,12 +8,14 @@
     padding: calc($header-height + $site-offset) $site-offset;
     
     .nav-menu-item {
+      /* height: 1em;
+      line-height: 1em; */
       @apply ml-0;
 
-      .placeholder-menu,
       .submenu {
         @apply py-2;
-      }
+      } 
+
       .submenu .nav-menu-item {
         overflow: hidden;
         height: 2em;
@@ -32,6 +34,8 @@
 
     .placeholder-menu {
       visibility: hidden;
+      height: 0;
+      padding: 0;
     }
 
     .placeholder-menu .placeholder-item {
@@ -40,6 +44,11 @@
       line-height: 2em;
       transition: ease $short;
       white-space: nowrap;
+    }
+    &.hover .placeholder-menu {
+      padding-top: 0.5rem;
+      height: auto;
+      padding-bottom: 0.5rem;
     }
     &.hover .placeholder-menu .placeholder-item {
       overflow: visible;

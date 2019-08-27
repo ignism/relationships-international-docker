@@ -32,6 +32,21 @@
 
     <div class="main-wrapper z-10" data-barba="wrapper">
       <main class="main {{ main_class|join(' ') }}" data-barba="container" data-barba-namespace="{{ post.post_name }}">
+        <div class="breadcrumps-placeholder hidden">
+          {% if post.meta("breadcrumps") | length > 0 %}
+            {% set breadcrumps = post.meta("breadcrumps") %}
+          {% endif %}
+
+          <ul class="flex justify-start breadcrumps">
+            {% if breadcrumps | length > 0 %}
+              <li>Home</li>
+              {% for item in breadcrumps %}
+                <li>{{ item.breadcrump }}</li>
+              {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+
         {% block main %}{% endblock %}
 
         {% block scripts %}{% endblock %}
