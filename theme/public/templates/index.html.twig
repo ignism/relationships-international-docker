@@ -6,38 +6,4 @@
 
 {% block main %}
 
-  <section class="section header-offset">
-    <div class="container">
-
-      {{ macros.title('Gottman Method<br>marathon therapy') }}
-
-      {{ macros.intro('We offer practical therapy that helps couples learn how to keep conflict discussions calm, to break out of habits that lead to conflict, to generate greater understanding and to increase respect, affection and closeness.', 'blue') }}
-
-      {{ macros.subtitle('When is marathon couples therapy not suitable?') }}
-
-      {{ macros.text('', true) }}
-       
-    </div>
-  </section>
-
-  {% include "components/separator.html.twig" %}
-
-  <section class="section">
-    <div class="container">
-
-      {{ macros.subtitle('When is marathon couples therapy not suitable?') }}
-
-      {{ macros.text('', true) }}
-
-    </div>
-  </section>
-
-  {% include "components/quote.html.twig" %}
-
-  {% include "components/excerpt.html.twig" with { color: 'brown' } %}
-  {% include "components/excerpt.html.twig" with { color: 'blue' } %}
-  {% include "components/excerpt.html.twig" with { color: 'red' } %}
-
-  {% include "components/cta-footer.html.twig" %}
-
 {% endblock %}

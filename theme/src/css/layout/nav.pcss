@@ -18,41 +18,46 @@
 
       .submenu .nav-menu-item {
         overflow: hidden;
-        height: 2em;
+        height: 0;
         line-height: 2em;
         white-space: nowrap;
         opacity: 0;
-        transition: ease $short;
+        transition: opacity ease $short;
       }
 
       &.submenu .nav-menu-item,
       &.expand .submenu .nav-menu-item {
         overflow: visible;
+        height: 2em;
         opacity: 1;
+      }
+      &.expand .placeholder-menu {
+        padding-top: 0.5rem;
+        max-height: 200px;
+        /* height: 200px; */
+        padding-bottom: 0.5rem;
+      }
+      &.expand .placeholder-menu .placeholder-item {
+        overflow: visible;
+        height: 2em;
       }
     }
 
     .placeholder-menu {
       visibility: hidden;
-      height: 0;
+      max-height: 0;
       padding: 0;
+      transition: ease $short;
     }
 
     .placeholder-menu .placeholder-item {
-      overflow: hidden;
+      /* overflow: hidden; */
       height: 0;
       line-height: 2em;
       transition: ease $short;
       white-space: nowrap;
-    }
-    &.hover .placeholder-menu {
-      padding-top: 0.5rem;
-      height: auto;
-      padding-bottom: 0.5rem;
-    }
-    &.hover .placeholder-menu .placeholder-item {
-      overflow: visible;
-      height: 2em;
+      background: red;
+      width: 10px;
     }
   }
 
@@ -77,7 +82,7 @@
   }
   &.active {
     .nav-menu {
-      left: 10vw;
+      left: 0;
     }
     .nav-burger {
       span {
@@ -94,26 +99,40 @@
   }
 }
 
-@screen sm {
-  .nav-main {
-    &.active {
-      .nav-menu {
-        left: 20vw;
-      }
-    }
-  }
-}
-
 @screen lg {
   .nav-main {
     .nav-menu {
       @apply relative w-auto h-auto inset-auto flex-row p-0 bg-transparent text-black;
+      .submenu {
+        @apply mt-2;
+      }
       ul:not(.submenu) > .nav-menu-item {
         @apply ml-4;
+      }
+
+      &.hover .placeholder-menu {
+        padding-top: 0.5rem;
+        max-height: 200px;
+        /* height: 200px; */
+        padding-bottom: 0.5rem;
+      }
+      &.hover .placeholder-menu .placeholder-item {
+        overflow: visible;
+        height: 2em;
       }
     }
     .nav-burger {
       @apply hidden;
+    }
+  }
+}
+
+@screen xl {
+  .nav-main {
+    .nav-menu {
+      ul:not(.submenu) > .nav-menu-item {
+        @apply ml-10;
+      }
     }
   }
 }

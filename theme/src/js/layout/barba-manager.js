@@ -9,6 +9,7 @@ class BarbaManager extends CoreModule {
     barba.use(barbaCss)
     try {
       barba.init({
+        prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
         transitions: [
           {
             name: 'barba-fade',

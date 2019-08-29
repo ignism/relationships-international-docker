@@ -3,13 +3,19 @@
 {% extends "core/base.html.twig" %}
 
 {% set main_class = ['header-offset'] %}
+{% set breadcrumps = [
+  { breadcrump: 'Couples' },
+  { breadcrump: 'Couples Workshops' }
+] %}
 
 {% block main %}
+
+  {% set banner_index = 1 %}
 
   <section class="pt-12">
     <div class="container">
       <div class="row">
-        <div class="col w-6/12 ml-1/12">
+        <div class="col md:w-6/12 md:ml-1/12">
           <h1>Couples<br>Workshops</h1>
         </div>
       </div>
@@ -23,7 +29,7 @@
         {% for post in posts %}
           {% if locale == post.id|get_post_lang %}
 
-            <div class="col ml-5/12 w-6/12">
+            <div class="col md:w-10/12 md:ml-1/12 lg:w-6/12 lg:ml-5/12">
               <article class="index-{{ loop.index }}">
                 <h2 class="text-blue font-medium">
                   {{ post.title }}

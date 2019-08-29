@@ -6,10 +6,10 @@
 
 {% block main %}
 
-  <section>
+  <section class="pt-12 pb-6">
     <div class="container">
       <div class="row">
-        <div class="col w-6/12 ml-1/12">
+        <div class="col md:w-6/12 md:ml-1/12">
           <h1>{{ post.meta('page_title') }}</h1>
         </div>
       </div>
@@ -23,7 +23,7 @@
   <section class="section">
     <div class="container">
       <div class="row">
-        <div class="col w-6/12 ml-1/12">
+        <div class="col md:w-10/12 lg:w-6/12 md:ml-1/12">
           <h1>Meet the therapists</h1>
         </div>
       </div>
@@ -31,12 +31,12 @@
       
       {% for item in post.meta('therapists') %}
 
-      <div class="row mt-12">
-        <div class="col w-3/12 mx-1/12">
+      <div class="row flex-wrap mt-12">
+        <div class="col w-6/12 mb-6 md:mb-0 md:w-3/12 md:mx-1/12">
           <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
         </div>
 
-        <div class="col w-6/12">
+        <div class="col md:w-6/12">
           <h3>
             {{ item.name }} {{ item.degree }}<br>
             Relationships International {{ item.location }}

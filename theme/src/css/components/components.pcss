@@ -40,5 +40,26 @@ button,
 .separator {
   padding-top: $section-offset;
   padding-bottom: $section-offset;
-  min-height: 16rem;
+  height: 12rem;
+  background-size: cover;
+  background-position: center;
+
+  .paralax {
+    position: absolute;
+    height: 200%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+@screen md {
+  .separator {
+    height: 16rem;
+  }
+}
+
+@screen lg {
+  .separator {
+    height: 20rem;
+  }
 }

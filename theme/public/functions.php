@@ -106,8 +106,8 @@ class RelationshipsInternational extends Timber\Site
      */
     public function add_to_context($context)
     {
-        $context['value'] = 'I am a value set in your functions.php file';
-        $context['menu'] = new Timber\Menu();
+        $context['menus'] = array(new Timber\Menu('English'), new Timber\Menu('Nederlands'));
+        
         $context['site'] = $this;
 
         $context['locale'] = get_locale();
@@ -116,6 +116,12 @@ class RelationshipsInternational extends Timber\Site
           'post_type' => 'blogarticle'
         );
         $context['blog_articles'] = Timber::get_posts($args);
+
+        $args = array(
+          'post_type' => 'mediaarticle',
+          'posts_per_page=5' => 5
+        );
+        $context['media_articles'] = Timber::get_posts($args);
 
         return $context;
     }
@@ -130,6 +136,15 @@ class RelationshipsInternational extends Timber\Site
                   'allow' => false,
                   'style_attr' => false,
                 ),
+            ),
+            'small-30vw' => array(
+              'resize' => array(600),
+              'srcset' => array(0.5, 2, 3),
+              'sizes' => '30vw',
+              'oversize' => array(
+                  'allow' => false,
+                  'style_attr' => false,
+              ),
             ),
             'portrait-30vw' => array(
                 'resize' => array(600, 800),

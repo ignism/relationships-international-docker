@@ -31,8 +31,9 @@ class Nav extends CoreModule {
 
     this.menuItems = document.querySelectorAll('.nav-menu-item')
     this.menuItems.forEach((menuItem) => {
-      menuItem.addEventListener('click', this.onClose)
-
+      if (menuItem.classList.contains('close-menu')) {
+        menuItem.addEventListener('click', this.onClose)
+      }
       if (menuItem.querySelector('.submenu')) {
         menuItem.addEventListener('mouseenter', this.expand)
         menuItem.addEventListener('mouseleave', this.collapse)
@@ -53,7 +54,9 @@ class Nav extends CoreModule {
     })
 
     this.menuItems.forEach((menuItem) => {
-      menuItem.removeEventListener('click', this.onClose)
+      if (menuItem.classList.contains('close-menu')) {
+        menuItem.removeEventListener('click', this.onClose)
+      }
       if (menuItem.querySelector('.submenu')) {
         menuItem.removeEventListener('mouseenter', this.expand)
         menuItem.removeEventListener('mouseleave', this.collapse)

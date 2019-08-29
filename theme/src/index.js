@@ -4,7 +4,7 @@ import 'zenscroll'
 
 import { core } from './js/core'
 import { header, nav, footer, barbaManager } from './js/layout'
-import { images, swiperManager, breadcrumps } from './js/components'
+import { images, swiperManager, breadcrumps, paralax } from './js/components'
 
 ;(function() {
   core.attach(header, { element: document.querySelector('.header-main') })
@@ -15,6 +15,7 @@ import { images, swiperManager, breadcrumps } from './js/components'
   core.attach(images, {}, true)
   core.attach(swiperManager, {}, true)
   core.attach(breadcrumps, {}, true)
+  core.attach(paralax, {}, true)
 
   core.init()
 })()

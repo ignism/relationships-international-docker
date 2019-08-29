@@ -2,10 +2,10 @@
 
   {% if item.acf_fc_layout == "intro" %}
 
-    <section class="section">
+    <section class="py-6">
       <div class="container">
         <div class="row">
-          <div class="col w-8/12 ml-3/12">
+          <div class="col md:w-9/12 md:ml-1/12 lg:w-8/12 lg:ml-3/12">
 
             <h2 class="font-display font-bold leading-tight text-blue">
               {{ item.text }}
@@ -18,10 +18,10 @@
 
   {% elseif item.acf_fc_layout == 'text' %}
 
-    <section class="section">
+    <section class="py-6">
       <div class="container">
         <div class="row">
-          <div class="wysiwyg col w-6/12 ml-5/12">
+          <div class="wysiwyg col md:w-9/12 md:ml-2/12 lg:w-6/12 lg:ml-5/12">
             
             {{ item.text }}
 
@@ -32,15 +32,13 @@
   
   {% elseif item.acf_fc_layout == 'text_with_image' %}
 
-    <section class="section">
+    <section class="py-6">
       <div class="container">
-        <div class="row">
-          <div class="wysiwyg col w-3/12 ml-1/12">
-            
-            <img{{ item.image|get_timber_image_responsive('portrait-30vw') }}>
-
+        <div class="row flex-wrap">
+          <div class="wysiwyg col mb-4 lg:mb-0 md:w-4/12 md:ml-2/12 lg:w-3/12 lg:ml-1/12"> 
+            <img{{ item.image|get_timber_image_responsive('small-30vw') }}>
           </div>
-          <div class="wysiwyg col w-6/12 ml-1/12">
+          <div class="wysiwyg col md:w-9/12 md:ml-2/12 lg:w-6/12 lg:ml-1/12">
             
             {{ item.text }}
 
@@ -61,17 +59,17 @@
 
   {% elseif item.acf_fc_layout == 'quote' %}
 
-    {% include "components/quote.html.twig" with {
-      quote : item.text,
+    {% include "components/separator.html.twig" with {
+      text : item.text,
       name: item.name
     } %}
 
   {% elseif item.acf_fc_layout == 'extra_title' %}
 
-    <section class="section">
+    <section class="pt-12 pb-6">
     <div class="container">
       <div class="row">
-        <div class="col w-6/12 ml-1/12">
+        <div class="col md:w-6/12 md:ml-1/12">
             <h1>{{ item.text }}</h1>
         </div>
       </div>

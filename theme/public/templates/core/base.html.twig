@@ -31,11 +31,28 @@
     {% endblock %}
 
     <div class="main-wrapper z-10" data-barba="wrapper">
-      <main class="main {{ main_class|join(' ') }}" data-barba="container" data-barba-namespace="{{ post.post_name }}">
+      {% if post.meta("breadcrumps") | length > 0 %}
+        {% set breadcrumps = post.meta("breadcrumps") %}
+      {% endif %}
+
+      {% set accent_color = "brown" %}
+      {% if breadcrumps | length > 0 %}
+        {% if breadcrumps[0].breadcrump == "Couples" %}
+          {% set accent_color = "green" %}
+        {% elseif breadcrumps[0].breadcrump == "Professionals" %}
+          {% set accent_color = "red" %}
+        {% endif %}
+
+      {% endif %}
+
+      {% if post.meta('banner_variant') %}
+        {% set banner_index = post.meta('banner_variant') %}
+      {% else %}
+        {% set banner_index = 1 %}
+      {% endif %}
+
+      <main class="main accent-{{ accent_color }} {{ main_class|join(' ') }}" data-barba="container" data-barba-namespace="{{ post.post_name }}">
         <div class="breadcrumps-placeholder hidden">
-          {% if post.meta("breadcrumps") | length > 0 %}
-            {% set breadcrumps = post.meta("breadcrumps") %}
-          {% endif %}
 
           <ul class="flex justify-start breadcrumps">
             {% if breadcrumps | length > 0 %}

@@ -15,11 +15,10 @@
 
       </ul>
 
-      <ul class="flex submenu absolute top-0 left-0 flex-col">
+      <ul class="ml-12 lg:ml-0 flex submenu absolute top-0 left-0 flex-col">
 
         {% for item in menu %}
-
-          <li class="nav-menu-item close-menu">
+          <li class="nav-menu-item close-menu text-base">
             <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
           </li>
 
@@ -34,8 +33,28 @@
 
       {% for item in menu %}
 
-        <li class="nav-menu-item close-menu">
-          <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+        {% if item.title == "Nederlands" or item.title == "English" %}
+          {% set menu_class = "prevent" %}
+          {% set attribute = 'data-barba-prevent' %}
+        {% endif %}
+
+        <li class="nav-menu-item mb-6 lg:mb-0">
+          {% if item.title == "Nederlands" or item.title == "English" %}
+
+            {% if item.title == "Nederlands" %}
+              {% set label = 'NL' %}
+              {% set link = site.link ~ "/nl" %}
+            {% elseif item.title == 'English' %}
+              {% set label = 'EN' %}
+              {% set link = site.link %}
+            {% endif %}
+            <a {{ attribute }} class="{{ menu_class }}" target="{{ item.target }}" href="{{ link }}">{{ label }}</a>
+
+          {% else %}
+
+            <a {{ attribute }} class="{{ menu_class }}" target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+
+          {% endif %}
 
           {% include "components/menu.html.twig" with {
             "menu" : item.get_children,

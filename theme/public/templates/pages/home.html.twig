@@ -5,16 +5,24 @@
 {% set main_class = ['header-offset'] %}
 
 {% block main %}
-  <section class="pb-12 text-4xl text-white font-display font-bold -mt-12">
+  <section class="pb-12 text-xl md:text-3xl lg:text-4xl text-white font-display font-bold -mt-20 lg:-mt-12">
     <div class="swiper-container h-full">
       <div class="swiper-wrapper">
 
         {% for slide in post.meta("header_slider") %}
+          {% if loop.index == 1 %}
+            {% set slider_index = 1 %}
+          {% elseif loop.index == 2 %}
+            {% set slider_index = 5 %}
+          {% else %}
+            {% set slider_index = 3 %}
+          {% endif %}
+          
 
-          <div class="swiper-slide section" style="height: 5em; background-size: cover; background-image: url(https://images.unsplash.com/photo-1552084117-56a987666449?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1834&q=80)">
+          <div class="swiper-slide section" style="background-size: cover; background-position: center; background-image: url({{ theme.link }}/images/banner_{{ slider_index }}.jpg)">
             <div class="container h-full flex items-start">
               <div class="row w-full">
-                <div class="col w-10/12 mx-1/12">
+                <div class="col md:w-10/12 md:mx-1/12">
                   <p class="max-w-4xl leading-tight">
                     {{ slide.slide_text }}
                   </p>
@@ -30,70 +38,122 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section text-base md:text-lg lg:text-xl">
     <div class="container">
-      <div class="row">
+      <div class="row flex-wrap">
 
-        <div class="col w-4/12 ml-1/12">
+        <div class="col md:w-8/12 lg:w-4/12 md:ml-2/12 lg:ml-1/12">
           <div class="flex items-end mb-8">
             <div class="flex-schrink mr-4">
-              <img src="{{ theme.link }}/images/couples.svg" alt="">
+              <img class="w-10/12" src="{{ theme.link }}/images/couples.svg" alt="">
             </div>
             <div class="flex-grow">
-              <h3 class="text-xl font-bold">Couples</h3>
+              <h3 class="font-bold">Couples</h3>
             </div>
           </div>
           <p>
             {{ post.meta('therapy').couples }}
           </p>
+          <p class="block lg:hidden">
+            <p class="text-green text-right underline pt-4 pb-12">
+              {% if locale == "en_GB" %}
+                <a href="/en-couples-therapy">Read more</a>
+              {% else %}
+                <a href="nl/nl-couples-therapy">Lees verder</a>
+              {% endif %}
+            </p>
+          </p>
         </div>
 
-        <div class="col w-4/12 ml-2/12 mr-1/12">
+        <div class="col md:w-8/12 lg:w-4/12 md:ml-2/12 lg:mr-1/12">
           <div class="flex items-end mb-8">
             <div class="flex-schrink mr-4">
-              <img src="{{ theme.link }}/images/individuals.svg" alt="">
+              <img class="w-10/12" src="{{ theme.link }}/images/individuals.svg" alt="">
             </div>
             <div class="flex-grow">
-              <h3 class="text-xl font-bold">Individuals</h3>
+              <h3 class="font-bold">Individuals</h3>
             </div>
           </div>
           <p>
             {{ post.meta('therapy').individuals }}
           </p>
+          <p class="block lg:hidden">
+            <p class="text-green text-right underline pt-4">
+              {% if locale == "en_GB" %}
+                <a href="/en-individual-counseling">Read more</a>
+              {% else %}
+                <a href="nl/nl-individual-counseling">Lees verder</a>
+              {% endif %}
+            </p>
+          </p>
         </div>
 
       </div>
+
+      <div class="hidden lg:flex">
+        <div class="row">
+
+          <div class="col w-4/12 ml-1/12">
+            <p class="text-green text-right underline pt-4">
+              {% if locale == "en_GB" %}
+                <a href="/en-couples-therapy">Read more</a>
+              {% else %}
+                <a href="nl/nl-couples-therapy">Lees verder</a>
+              {% endif %}
+            </p>
+          </div>
+          <div class="col w-4/12 ml-2/12 mr-1/12">
+            <p class="text-green text-right underline pt-4">
+              {% if locale == "en_GB" %}
+                <a href="/en-individual-counseling">Read more</a>
+              {% else %}
+                <a href="nl/nl-individual-counseling">Lees verder</a>
+              {% endif %}
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
-  {% include "components/quote.html.twig" with {
-    quote : post.meta("quote_1").text,
-    name: post.meta("quote_1").name
+  {% include "components/separator.html.twig" with {
+    text : post.meta("quote_1").text,
+    name: post.meta("quote_1").name,
+    banner_index: 2
   } %}
 
-  <section class="section">
+  <section class="section text-base md:text-lg lg:text-xl">
     <div class="container">
-      <div class="row">
+      <div class="row flex-wrap">
 
-        <div class="col w-4/12 ml-1/12">
+        <div class="col md:w-6/12 lg:w-4/12 lg:ml-1/12">
           <div class="flex items-end mb-8">
             <div class="flex-schrink mr-4">
-              <img src="{{ theme.link }}/images/professionals.svg" alt="">
+              <img class="w-10/12" src="{{ theme.link }}/images/professionals.svg" alt="">
             </div>
             <div class="flex-grow">
-              <h3 class="text-xl font-bold">Professionals</h3>
+              <h3 class="font-bold">Professionals</h3>
             </div>
           </div>
           <p>
             {{ post.meta('professionals') }}
           </p>
+          <p class="text-red text-right underline pt-4">
+            {% if locale == "en_GB" %}
+              <a href="/en-individual-counseling">Read more</a>
+            {% else %}
+              <a href="nl/nl-individual-counseling">Lees verder</a>
+            {% endif %}
+          </p>
         </div>
 
-        <div class="col w-5/12 ml-1/12 mr-1/12">
+        <div class="col w-full mt-12 md:mt-0 md:w-6/12 lg:w-5/12 lg:ml-1/12 lg:mr-1/12">
           <div class="flex flex-wrap h-full text-white text-xl font-medium leading-tight">
             <div class="ml-2/12 w-6/12 min-h-4/12 bg-blue">
               <a href="#" class="hover:no-underline">
-                <div class="h-full flex flex-col items-center justify-center">
+                <div class="h-full flex flex-col items-center justify-center py-4">
                   <div>Gottman</div>
                   <div class="underline">Level 1</div>
                 </div>
@@ -101,7 +161,7 @@
             </div>
             <div class="ml-4/12 w-6/12 min-h-4/12 bg-blue-dark">
               <a href="#" class="hover:no-underline">
-                <div class="h-full flex flex-col items-center justify-center">
+                <div class="h-full flex flex-col items-center justify-center py-4">
                   <div>Gottman</div>
                   <div class="underline">Level 2</div>
                 </div>
@@ -109,7 +169,7 @@
             </div>
             <div class="ml-1/12 w-6/12 min-h-4/12 bg-blue-darker">
               <a href="#" class="hover:no-underline">
-                <div class="h-full flex flex-col items-center justify-center">
+                <div class="h-full flex flex-col items-center justify-center py-4">
                   <div>Gottman</div>
                   <div class="underline">Level 3</div>
                 </div>
@@ -122,19 +182,21 @@
     </div>
   </section>
 
-  {% include "components/separator.html.twig" %}
+  {% include "components/separator.html.twig" with {
+    banner_index: 4
+  } %}
 
-  <section class="section -mt-32">
+  <section class="section lg:-mt-32 text-base md:text-lg lg:text-xl relative z-30">
     <div class="container">
-      <div class="row">
-        <div class="col w-3/12 ml-1/12">
-          <h1 class="font-display text-brown mt-32">
+      <div class="row flex-wrap">
+        <div class="col w-full lg:ml-1/12">
+          <h1 class="font-display text-brown mb-12 lg:mb-0 lg:mt-32">
             Meet the<br>therapists
           </h1>
         </div>
 
         {% for item in post.meta("therapists") %}
-          <div class="col w-3/12 mr-1/12">
+          <div class="col w-10/12 mx-1/12 mb-12 md:mb-0 md:w-5/12 lg:w-3/12 md:ml-0">
             <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
               <div class="pt-8">
                 <div class="leading-normal font-bold">{{ item.name }}</div>
@@ -154,9 +216,10 @@
       </div>
     </section>
 
-    {% include "components/quote.html.twig" with {
-      quote : post.meta("quote_2").text,
-      name: post.meta("quote_2").name
+    {% include "components/separator.html.twig" with {
+      text : post.meta("quote_2").text,
+      name: post.meta("quote_2").name,
+      banner_index: 5
     } %}
 
     <section class="pt-24 pb-8">
@@ -164,16 +227,16 @@
         <div class="swiper-container h-full">
           <div class="swiper-wrapper pb-32">
 
-            {% for slide in 1..3 %}
+            {% for slide in media_articles %}
 
               <div class="swiper-slide">
                 <div class="h-full flex items-start">
                   <div class="flex w-full">
-                    <div class="w-4/12 mx-auto">
-                      <p class="quoted text-center leading-tight text-4xl">Love Lab Predicts Marital Outcome</p>
-                      <p class="text-center text-brown leading-tight text-3xl pt-12 pb-6">BBC</p>
-                      <p class="text-center text-brown leading-tight text-xl">
-                        <a class="border-b border-brown" href="#">view more</a>
+                    <div class="w-10/12 md:w-6/12 lg:w-4/12 mx-auto">
+                      <p class="quoted text-center leading-tight text-xl md:text-2xl lg:text-4xl">{{ slide.title }}</p>
+                      <p class="text-center text-brown leading-tight text-xl lg:text-3xl pt-4 pb-2 lg:pt-12 lg:pb-6">{{ slide.source }}</p>
+                      <p class="text-center text-brown leading-tight text-base lg:text-xl">
+                        <a class="border-b border-brown" href="/mediaarticle">view more</a>
                       </p>
                     </div>
                   </div>
@@ -189,7 +252,8 @@
     </section>
 
     {% include "components/cta-footer.html.twig" with {
-      text: post.meta('page_footer')
+      text: post.meta('page_footer'),
+      banner_index: 6
     } %}
 
   {% endblock %}

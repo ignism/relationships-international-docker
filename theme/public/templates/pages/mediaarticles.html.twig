@@ -4,7 +4,14 @@
 
 {% set main_class = ['header-offset'] %}
 
+{% set breadcrumps = [
+  { breadcrump: 'About Us' },
+  { breadcrump: 'In The Media' }
+] %}
+
 {% block main %}
+
+  {% set banner_index = 4 %}
 
   <section class="pt-12">
     <div class="container">
@@ -22,7 +29,7 @@
 
         {% for post in posts %}
 
-          <div class="col ml-5/12 w-6/12">
+          <div class="col md:w-10/12 md:ml-1/12 lg:w-6/12 lg:ml-5/12">
             <article class="index-{{ loop.index }}">
               <h2 class="text-brown font-medium">
                 {{ post.meta('source')}}

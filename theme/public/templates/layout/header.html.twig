@@ -3,27 +3,39 @@
       <div class="container">
         <div class="relative flex items-start justify-between">
           <div class="absolute inset-0 border-b border-black" style="max-height: 76px; z-index: -1"></div>
-          <div class="branding mb-4" style="width: 200px;">
-            <a href="{{ site.link }}">
+          <div class="branding mb-4">
+            {% if locale == 'nl_NL' %}
+            <a href="{{ site.link }}/nl">
+              <img src="{{ theme.link }}/images/logo-black.svg" alt="">
+            </a>            
+            {% else %}
+             <a href="{{ site.link }}">
               <img src="{{ theme.link }}/images/logo-black.svg" alt="">
             </a>
+            {% endif %}
           </div>
 
-          <div class="nav-menu text-3xl lg:text-base z-40" style="padding-top: 44px">
+          <div class="nav-menu text-xl lg:text-base z-40" style="padding-top: 44px">
+            {% set menu = menus[0] %}
+
+            {% if locale == 'nl_NL' %}
+              {% set menu = menus[1] %}
+            {% endif %}
+            
             {% include "components/menu.html.twig" with {
               "menu" : menu.get_items,
               "isSubMenu" : false
             } %}
           </div>
 
-          <div class="nav-burger toggle-menu relative z-50">
+          <div class="nav-burger toggle-menu relative z-50 mt-2">
             <span></span>
             <span></span>
           </div>
         </div>
       </div>
 
-      <div class="absolute w-full bg-white" style="top:80px">
+      <div class="breadcrumps-wrapper absolute w-full bg-white">
         <div class="container">
           <ul class="flex justify-start breadcrumps"></ul>
         </div>

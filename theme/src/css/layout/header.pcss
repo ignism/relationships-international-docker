@@ -1,5 +1,5 @@
 .header-offset {
-  padding-top: 157px;
+  padding-top: 80px;
 }
 
 .header-main {
@@ -9,8 +9,12 @@
   transition: $short ease;
   top: 0;
   
+  .breadcrumps-wrapper {
+    top: 46px;
+  }
+
   .breadcrumps {
-    @apply w-full py-2;
+    @apply w-full py-2 text-xs;
     li {
       @apply ml-2 capitalize;
 
@@ -32,16 +36,84 @@
 
   &.pinned {
     @apply bg-white;
-    padding-top: $site-offset;
+    padding-top: 1rem;
     &.hidden-on-scroll {
-      top: -112px;
+      top: -62px;
+    }
+  }
 
-      &:not(.hover) .breadcrumps {
-        @apply border-0;
+  .branding {
+    width: 100px;
+  }
+}
+
+@screen md {
+  .header-offset {
+    padding-top: 157px;
+  }
+
+  .header-main {
+    .branding {
+      width: 150px;
+    }
+
+    &.pinned {
+      &.hidden-on-scroll {
+        top: -77px;
       }
+    }
 
-      &.hover {
-        top: 0;
+    .breadcrumps-wrapper {
+      top: 61px;
+    }
+    .breadcrumps {
+      @apply w-full py-2 text-base;
+    }
+  }
+}
+
+@screen lg {
+  .header-main {
+    .branding {
+      width: 200px;
+    }
+
+    &.pinned {
+      @apply bg-white;
+      padding-top: $site-offset;
+      &.hidden-on-scroll {
+        top: -112px;
+
+        &:not(.hover) .breadcrumps {
+          @apply border-0;
+        }
+
+        &.hover {
+          top: 0;
+        }
+      }
+    }
+    .breadcrumps-wrapper {
+      top: 76px;
+    }
+    .breadcrumps {
+      @apply w-full py-2 text-base;
+      li {
+        @apply ml-2 capitalize;
+
+        &:first-child {
+          @apply ml-0;
+        }
+        &:last-child {
+          @apply text-brown;
+        }
+
+        &:not(:last-child) {
+          &::after {
+            @apply ml-2;
+            content: ">";
+          }
+        }
       }
     }
   }

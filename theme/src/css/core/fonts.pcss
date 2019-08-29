@@ -38,16 +38,76 @@ p {
 }
 
 .wysiwyg {
+  @apply text-lg;
   h3, p:not(:last-of-type) {
     @apply font-normal mb-4
+  }
+  ul {
+    @apply my-4;
+
+    li {
+      @apply relative;
+      margin-left: 1.5em;
+
+      &::before {
+        @apply absolute border-black border-b-2;
+        width: 1em;
+        margin-left: -1.5em;
+        margin-top: 0.75em;
+        content: '';
+      }
+    }
+  }
+  a {
+    @apply underline;
   }
 }
 
 .therapists-wysiwyg {
+  @apply text-lg;
   h3, p:not(:last-of-type) {
     @apply font-normal mb-4
   }
   li {
     @apply my-4;
+  }
+  a {
+    @apply underline;
+  }
+}
+
+.accent-blue {
+  .wysiwyg,
+  .therapists-wysiwyg {
+    a {
+      @apply text-blue;
+    }
+  }
+}
+
+.accent-green {
+  .wysiwyg,
+  .therapists-wysiwyg {
+    a {
+      @apply text-green;
+    }
+  }
+}
+
+.accent-brown {
+  .wysiwyg,
+  .therapists-wysiwyg {
+    a {
+      @apply text-brown;
+    }
+  }
+}
+
+.accent-red {
+  .wysiwyg,
+  .therapists-wysiwyg {
+    a {
+      @apply text-red;
+    }
   }
 }

@@ -25,9 +25,31 @@
       transition: $short ease;
     }
   }
+
+  .branding {
+    width: 100px;
+  }
 }
 
 .footer-overflow-background {
   @apply z-0 fixed w-full bottom-0;
   height: 50vh;
+}
+
+@screen md {
+  .footer-main {
+
+  .branding {
+    width: 150px;
+  }
+  }
+}
+
+@screen lg {
+  .footer-main {
+
+  .branding {
+    width: 200px;
+  }
+  }
 }
