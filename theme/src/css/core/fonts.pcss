@@ -37,6 +37,20 @@ p {
   max-width: 40em;
 }
 
+@screen lg {
+  h1 {
+  @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+}
+
 .wysiwyg {
   @apply text-lg;
   h3, p:not(:last-of-type) {
@@ -51,7 +65,7 @@ p {
 
       &::before {
         @apply absolute border-black border-b-2;
-        width: 1em;
+        width: 0.9em;
         margin-left: -1.5em;
         margin-top: 0.75em;
         content: '';
@@ -73,6 +87,13 @@ p {
   }
   a {
     @apply underline;
+  }
+}
+
+@screen xl {
+  .wysiwyg,
+  .therapists-wysiwyg {
+    @apply text-xl;
   }
 }
 

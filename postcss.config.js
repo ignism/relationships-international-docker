@@ -5,6 +5,10 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './theme/public/templates/**/*.twig'
   ],
   whitelistPatterns: [/barba-/],
+  whitelistPatterns: [/swiper-/],
+  whitelistPatterns: [/submenu-/],
+  whitelistPatterns: [/accent-/],
+  whitelistPatterns: [/index-/],
   whitelistPatternsChildren: [/header-main/],
 
   // Include any special characters you're using in this regular expression
@@ -26,6 +30,6 @@ module.exports = {
     require('tailwindcss')('./tailwind.config.js'),
     require('postcss-object-fit-images'),
     require('autoprefixer'),
-    ...(process.env.NODE_ENV === 'production' ? [purgecss, require('cssnano')] : [])
+    ...(process.env.NODE_ENV === 'production' || 'development' ? [purgecss, require('cssnano')] : [])
   ]
 }

@@ -15,11 +15,11 @@
 
       </ul>
 
-      <ul class="ml-12 lg:ml-0 flex submenu absolute top-0 left-0 flex-col">
+      <ul class="ml-12 lg:ml-0 flex text-black submenu absolute top-0 left-0 flex-col">
 
         {% for item in menu %}
-          <li class="nav-menu-item close-menu text-base">
-            <a target="{{ item.target }}" href="{{ item.link }}">{{ item.title }}</a>
+          <li class="nav-menu-item hover:text-gray close-menu text-base">
+            <a target="{{ item.target }}" href="{{ item.link|site_link }}">{{ item.title }}</a>
           </li>
 
         {% endfor %}
@@ -38,7 +38,7 @@
           {% set attribute = 'data-barba-prevent' %}
         {% endif %}
 
-        <li class="nav-menu-item mb-6 lg:mb-0">
+        <li class="nav-menu-item hover:text-gray mb-6 lg:mb-0 submenu-{{ item.slug }}">
           {% if item.title == "Nederlands" or item.title == "English" %}
 
             {% if item.title == "Nederlands" %}

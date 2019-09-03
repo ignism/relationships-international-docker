@@ -5,8 +5,8 @@
 {% set main_class = ['header-offset'] %}
 
 {% block main %}
-  <section class="pb-12 text-xl md:text-3xl lg:text-4xl text-white font-display font-bold -mt-20 lg:-mt-12">
-    <div class="swiper-container h-full">
+  <section class="pb-12 text-xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-display font-bold -mt-20 lg:-mt-12">
+    <div class="swiper-container swiper-landing h-full" data-autoplay="true">
       <div class="swiper-wrapper">
 
         {% for slide in post.meta("header_slider") %}
@@ -19,11 +19,16 @@
           {% endif %}
           
 
-          <div class="swiper-slide section" style="background-size: cover; background-position: center; background-image: url({{ theme.link }}/images/banner_{{ slider_index }}.jpg)">
+          <div class="swiper-slide p-separator relative">
+            <div class="absolute inset-0" style="z-index: -1">
+              <figure class="no-paralax">
+                <img src="{{ theme.link }}/images/banner_{{ slider_index }}.jpg" alt="">
+              </figure>
+            </div>
             <div class="container h-full flex items-start">
               <div class="row w-full">
                 <div class="col md:w-10/12 md:mx-1/12">
-                  <p class="max-w-4xl leading-tight">
+                  <p class="max-w-4xl xl:max-w-5xl leading-tight">
                     {{ slide.slide_text }}
                   </p>
                 </div>
@@ -38,81 +43,61 @@
     </div>
   </section>
 
-  <section class="section text-base md:text-lg lg:text-xl">
+  <section class="section text-base md:text-lg lg:text-xl xl:text-xxl">
     <div class="container">
       <div class="row flex-wrap">
 
-        <div class="col md:w-8/12 lg:w-4/12 md:ml-2/12 lg:ml-1/12">
-          <div class="flex items-end mb-8">
-            <div class="flex-schrink mr-4">
-              <img class="w-10/12" src="{{ theme.link }}/images/couples.svg" alt="">
+        <div class="col mb-12 lg:mb-0 md:w-8/12 lg:w-4/12 md:ml-2/12 lg:ml-1/12 flex flex-col justify-between">
+          <div class="block">
+            <div class="flex items-end mb-8">
+              <div class="flex-schrink mr-4">
+                <img class="w-10/12" src="{{ theme.link }}/images/couples.svg" alt="">
+              </div>
+              <div class="flex-grow">
+                <h3 class="font-bold">Couples</h3>
+              </div>
             </div>
-            <div class="flex-grow">
-              <h3 class="font-bold">Couples</h3>
-            </div>
-          </div>
-          <p>
-            {{ post.meta('therapy').couples }}
-          </p>
-          <p class="block lg:hidden">
-            <p class="text-green text-right underline pt-4 pb-12">
-              {% if locale == "en_GB" %}
-                <a href="/en-couples-therapy">Read more</a>
-              {% else %}
-                <a href="nl/nl-couples-therapy">Lees verder</a>
-              {% endif %}
+            <p>
+              {{ post.meta('therapy').couples }}
             </p>
-          </p>
-        </div>
-
-        <div class="col md:w-8/12 lg:w-4/12 md:ml-2/12 lg:mr-1/12">
-          <div class="flex items-end mb-8">
-            <div class="flex-schrink mr-4">
-              <img class="w-10/12" src="{{ theme.link }}/images/individuals.svg" alt="">
-            </div>
-            <div class="flex-grow">
-              <h3 class="font-bold">Individuals</h3>
-            </div>
           </div>
-          <p>
-            {{ post.meta('therapy').individuals }}
-          </p>
-          <p class="block lg:hidden">
+          <div class="block">
             <p class="text-green text-right underline pt-4">
               {% if locale == "en_GB" %}
-                <a href="/en-individual-counseling">Read more</a>
+                <a href="{{ site.link }}/en-couples-therapy">Read more</a>
               {% else %}
-                <a href="nl/nl-individual-counseling">Lees verder</a>
-              {% endif %}
-            </p>
-          </p>
-        </div>
-
-      </div>
-
-      <div class="hidden lg:flex">
-        <div class="row">
-
-          <div class="col w-4/12 ml-1/12">
-            <p class="text-green text-right underline pt-4">
-              {% if locale == "en_GB" %}
-                <a href="/en-couples-therapy">Read more</a>
-              {% else %}
-                <a href="nl/nl-couples-therapy">Lees verder</a>
+                <a href="{{ site.link }}/nl/nl-couples-therapy">Lees verder</a>
               {% endif %}
             </p>
           </div>
-          <div class="col w-4/12 ml-2/12 mr-1/12">
-            <p class="text-green text-right underline pt-4">
-              {% if locale == "en_GB" %}
-                <a href="/en-individual-counseling">Read more</a>
-              {% else %}
-                <a href="nl/nl-individual-counseling">Lees verder</a>
-              {% endif %}
+        </div>
+
+        <div class="col md:w-8/12 lg:w-4/12 md:ml-2/12 lg:mr-1/12 flex flex-col justify-between">
+          <div class="block">
+            <div class="flex items-end mb-8">
+              <div class="flex-schrink mr-4">
+                <img class="w-10/12" src="{{ theme.link }}/images/individuals.svg" alt="">
+              </div>
+              <div class="flex-grow">
+                <h3 class="font-bold">Individuals</h3>
+              </div>
+            </div>
+            <p>
+              {{ post.meta('therapy').individuals }}
             </p>
           </div>
 
+          <div class="block">
+            <p class="text-green text-right underline pt-4">
+              {% if locale == "en_GB" %}
+                <a href="{{ site.link }}/en-individual-counseling">Read more</a>
+              {% else %}
+                <a href="{{ site.link }}/nl/nl-individual-counseling">Lees verder</a>
+              {% endif %}
+            </p>
+          </div>
         </div>
+
       </div>
 
     </div>
@@ -142,9 +127,9 @@
           </p>
           <p class="text-red text-right underline pt-4">
             {% if locale == "en_GB" %}
-              <a href="/en-individual-counseling">Read more</a>
+              <a href="{{ site.link }}/en-individual-counseling">Read more</a>
             {% else %}
-              <a href="nl/nl-individual-counseling">Lees verder</a>
+              <a href="{{ site.link }}/nl/nl-individual-counseling">Lees verder</a>
             {% endif %}
           </p>
         </div>
@@ -183,15 +168,16 @@
   </section>
 
   {% include "components/separator.html.twig" with {
-    banner_index: 4
+    banner_index: 4,
+    text: "&nbsp;"
   } %}
 
-  <section class="section lg:-mt-32 text-base md:text-lg lg:text-xl relative z-30">
+  <section class="section lg:-mt-40 text-base md:text-lg lg:text-xl relative z-30">
     <div class="container">
       <div class="row flex-wrap">
-        <div class="col w-full lg:ml-1/12">
+        <div class="col w-full lg:w-2/12 lg:ml-1/12">
           <h1 class="font-display text-brown mb-12 lg:mb-0 lg:mt-32">
-            Meet the<br>therapists
+            Meet the<br>therapists:
           </h1>
         </div>
 
@@ -203,7 +189,15 @@
                 <div class="leading-normal font-bold">{{ item.degree }}</div>
                 <div class="leading-normal ">Relationships International<br>{{ item.location }}</div>
                 <div class="leading-tight text-brown text-right">
-                  <a class="border-b border-brown" href="#">
+                    
+                  {% if locale == 'en_GB' %}
+                    {% set theralink = '/en-therapist-information' %}
+                  {% else %}
+                    {% set theralink = '/nl/nl-therapist-information' %}
+                  {% endif %}
+                  
+                  
+                  <a class="border-b border-brown" href="{{ site.link }}{{ theralink }}">
                     Read More
                   </a>
                 </div>
@@ -222,9 +216,9 @@
       banner_index: 5
     } %}
 
-    <section class="pt-24 pb-8">
+    <section class="py-8 lg:py-16 xl:py-20">
       <div class="container">
-        <div class="swiper-container h-full">
+        <div class="swiper-container swiper-media h-full">
           <div class="swiper-wrapper pb-32">
 
             {% for slide in media_articles %}
@@ -232,11 +226,11 @@
               <div class="swiper-slide">
                 <div class="h-full flex items-start">
                   <div class="flex w-full">
-                    <div class="w-10/12 md:w-6/12 lg:w-4/12 mx-auto">
-                      <p class="quoted text-center leading-tight text-xl md:text-2xl lg:text-4xl">{{ slide.title }}</p>
-                      <p class="text-center text-brown leading-tight text-xl lg:text-3xl pt-4 pb-2 lg:pt-12 lg:pb-6">{{ slide.source }}</p>
+                    <div class="w-10/12 md:w-6/12 lg:w-6/12 mx-auto">
+                      <p class="quoted text-center leading-tight text-xl md:text-3xl lg:text-5xl xl:text-7xl">{{ slide.title }}</p>
+                      <p class="text-center text-brown leading-tight text-xl lg:text-3xl pt-4 pb-2 lg:pt-16 lg:pb-6">{{ slide.source }}</p>
                       <p class="text-center text-brown leading-tight text-base lg:text-xl">
-                        <a class="border-b border-brown" href="/mediaarticle">view more</a>
+                        <a class="border-b border-brown" href="{{ site.link }}/mediaarticle">view more</a>
                       </p>
                     </div>
                   </div>

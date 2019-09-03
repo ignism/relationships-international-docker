@@ -1,5 +1,6 @@
 import 'swiper/dist/css/swiper.min.css'
-import Swiper from 'swiper'
+
+import Swiper from 'swiper/dist/js/swiper.min.js'
 import { CoreModule } from '../core/core-module'
 
 class SwiperManager extends CoreModule {
@@ -8,8 +9,11 @@ class SwiperManager extends CoreModule {
     this.instances = []
 
     this.containers.forEach(container => {
+      let autoplay = container.getAttribute('data-autoplay') == 'true' ? { delay: 5000 } : false
+
       let instance = new Swiper(container, {
         loop: true,
+        autoplay: autoplay,
         pagination: {
           el: container.querySelector('.swiper-pagination')
         }

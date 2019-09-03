@@ -2,7 +2,7 @@
     <nav id="nav-main" class="nav-main relative w-full" role="navigation">
       <div class="container">
         <div class="relative flex items-start justify-between">
-          <div class="absolute inset-0 border-b border-black" style="max-height: 76px; z-index: -1"></div>
+          <div class="nav-border absolute inset-0 border-b border-black" style="max-height: 76px; z-index: -1"></div>
           <div class="branding mb-4">
             {% if locale == 'nl_NL' %}
             <a href="{{ site.link }}/nl">
@@ -15,7 +15,7 @@
             {% endif %}
           </div>
 
-          <div class="nav-menu text-xl lg:text-base z-40" style="padding-top: 44px">
+          <div class="nav-menu lg:text-base text-xl xl:text-lg z-40" style="padding-top: 44px">
             {% set menu = menus[0] %}
 
             {% if locale == 'nl_NL' %}

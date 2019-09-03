@@ -2,22 +2,20 @@
   font-family: 'GTSuperDisplay';
   font-style:  normal;
   font-weight: 700;
-  src: url('GTSuperDisplay-Bold.eot?') format('eot'),
-       url('GTSuperDisplay-Bold.woff2') format('woff2'),
-       url('GTSuperDisplay-Bold.woff') format('woff'),
-       url('GTSuperDisplay-Bold.otf')  format('opentype'),
-       url('GTSuperDisplay-Bold.ttf')  format('truetype'),
-       url('GTSuperDisplay-Bold.svg#GTSuperDisplay-Bold') format('svg');
+  src: url('GT-Super-Display-Bold.eot?') format('eot'),
+       url('GT-Super-Display-Bold.woff2') format('woff2'),
+       url('GT-Super-Display-Bold.woff') format('woff'),
+       url('GT-Super-Display-Bold.otf')  format('opentype'),
+       url('GT-Super-Display-Bold.ttf')  format('truetype');
 }
 
 @font-face {
   font-family: 'GTSuperDisplay';
   font-style:  normal;
   font-weight: 400;
-  src: url('GTSuperDisplay-Regular.eot?') format('eot'),
-       url('GTSuperDisplay-Regular.woff2') format('woff2'),
-       url('GTSuperDisplay-Regular.woff') format('woff'),
-       url('GTSuperDisplay-Regular.otf')  format('opentype'),
-       url('GTSuperDisplay-Regular.ttf')  format('truetype'),
-       url('GTSuperDisplay-Regular.svg#GTSuperDisplay-Regular') format('svg');
+  src: url('GT-Super-Display-Regular.eot?') format('eot'),
+       url('GT-Super-Display-Regular.woff2') format('woff2'),
+       url('GT-Super-Display-Regular.woff') format('woff'),
+       url('GT-Super-Display-Regular.otf')  format('opentype'),
+       url('GT-Super-Display-Regular.ttf')  format('truetype');
 }

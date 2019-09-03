@@ -3,14 +3,14 @@
 {% endif %}
 
 <section class="pt-12">
-  <div class="separator w-full" style="background-image: url({{ theme.link }}/images/banner_{{ banner_index }}.jpg)">
+  <div class="separator p-separator w-full" style="background-image: url({{ theme.link }}/images/banner_{{ banner_index }}.jpg)">
     <div class="container h-full flex flex-col justify-center text-white text-2xl">
       <div class="row">
         <div class="col md:10/12 lg:w-8/12 md:ml-1/12">
-        {% if text %}
-          <p class="text-xl md:text-3xl lg:text-4xl text-white font-display font-bold leading-tight">{{ text }}</p>
+        {% if text == "Contact us today<br>to get started." or text == false %}
+          <p class="text-3xl md:text-4xl lg:text-6xl xl:text-7xl text-white font-display font-bold leading-tight">Contact us today<br>to get started.</p>
         {% else %}
-          <p class="text-xl md:text-3xl lg:text-4xl text-white font-display font-bold leading-tight">Contact us today<br>to get started.</p>
+          <p class="text-3xl md:text-4xl lg:text-4xl xl:text-5xl text-white font-display font-bold leading-tight">{{ text }}</p>
         {% endif %}
         </div>
       </div>

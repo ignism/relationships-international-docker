@@ -1,6 +1,6 @@
 import { eventBus } from '../core'
-import barba from '@barba/core'
-import barbaCss from '@barba/css'
+import barba from '@barba/core/dist/barba.js'
+import barbaCss from '@barba/css/dist/barba-css.js'
 import axios from 'axios'
 import { CoreModule } from '../core/core-module'
 

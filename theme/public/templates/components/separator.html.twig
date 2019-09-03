@@ -2,8 +2,8 @@
   {% set banner_index = 1 %}
 {% endif %}
 
-<section class="section">
-  <div class="separator relative{% if text is not defined %} separator-no-text{% endif %} w-full">
+<section class="section text-white font-display font-bold text-2xl md:text-4xl lg:text-5xl xl:text-6xl">
+  <div class="separator p-separator relative{% if text is not defined %} separator-no-text{% endif %} w-full">
     <div class="separator-background overflow-hidden absolute inset-0 bg-red z-10">
       <figure class="paralax">
         <img src="{{ theme.link }}/images/banner_{{ banner_index }}.jpg" alt="">
@@ -12,11 +12,11 @@
     <div class="container h-full flex flex-col justify-center relative z-20">
       <div class="row">
         <div class="col md:w-8/12 md:ml-1/12 {% if name %} quote{% endif %}">
-          <p class="text-xl md:text-3xl lg:text-4xl text-white font-display font-bold leading-tight">
+          <p class="leading-tight">
             {{ text }}
           </p>
           {% if name %}
-            <span class="name text-xl md:text-3xl lg:text-4xl text-white font-display font-bold leading-tight">{{ name }}</span>
+            <span class="name">{{ name }}</span>
           {% endif %}
         </div>
       </div>

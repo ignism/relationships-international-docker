@@ -38,9 +38,13 @@
       {% set accent_color = "brown" %}
       {% if breadcrumps | length > 0 %}
         {% if breadcrumps[0].breadcrump == "Couples" %}
-          {% set accent_color = "green" %}
+          {% if breadcrumps[1].breadcrump == "Couples Therapy" %}
+            {% set accent_color = "red" %}
+          {% else %}
+            {% set accent_color = "green" %}
+          {% endif %}
         {% elseif breadcrumps[0].breadcrump == "Professionals" %}
-          {% set accent_color = "red" %}
+          {% set accent_color = "brown" %}
         {% endif %}
 
       {% endif %}

@@ -1,40 +1,31 @@
 <div class="footer-wrapper relative">
 
-  <footer id="contact" class="section footer-main bg-gray text-xs lg:text-base text-white z-30">
+  <footer id="contact" class="section footer-main bg-gray text-xs lg:text-lg xl:text-xl text-white z-30">
     <div class="container">
 
       <div class="row flex-wrap">
-        <div class="col md:w-5/12 lg:w-4/12 lg:ml-1/12">
-          <p class="font-display font-bold text-4xl my-6">Amsterdam</p>
-          <p class="font-bold">Relationships International - Amsterdam</p>
-          <p>Julie Sharon-Wagschal</p>
-          <ul class="py-4">
-            <li>T 06 451 803 42</li>
-            <li>E amsterdam@relationshipsinternational.nl</li>
-          </ul>
-            <p>Groot Blankenberg 56<br>1082 AD Amsterdam</p>
-          <p class="py-4">
-            The practice can be reached with tram 5 and 51, and bus 62. IMPORTANT: Street parking is 1.40 euro per hour.
-            Parking machines are located around the corner.
-          </p>
-        </div>
+        
+        {% for item in footer_widget.meta('locations') %}
+          
+          <div class="col md:w-5/12 lg:w-4/12 lg:ml-1/12">
+            <p class="font-display font-bold text-3xl; md:text-4xl lg:text-6xl xl:text-7xl my-6">{{ item.location }}</p>
+            <p class="font-bold">Relationships International - {{ item.location }}</p>
+            <p>{{ item.name }}</p>
+            <ul class="py-4">
+              <li>T {{ item.phone }}</li>
+              <li>E {{ item.email }}</li>
+            </ul>
+              <p class="">{{ item.address }}</p>
+            <p class="py-4 text-base">
+              {{ item.how_to_reach }}
+            </p>
+          </div>
 
-        <div class="col md:w-5/12 lg:w-4/12 md:ml-1/12">
-          <p class="font-display font-bold text-4xl my-6">The Hague</p>
-          <p class="font-bold">Relationships International - Amsterdam</p>
-          <p>Julie Sharon-Wagschal</p>
-          <ul class="py-4">
-            <li>T 06 451 803 42</li>
-            <li>E amsterdam@relationshipsinternational.nl</li>
-          </ul>
-            <p>Groot Blankenberg 56<br>1082 AD Amsterdam</p>
-          <p class="py-4">
-            The practice can be reached with tram 9,bus 22.
-          </p>
-        </div>
+        {% endfor %}
+
       </div>
 
-      <div class="row">
+      <div class="row text-base">
         <div class="col w-full lg:w-11/12 lg:ml-1/12 flex justify-between items-end">
           <p class="opacity-50">
             Relationships International ©2019<br>

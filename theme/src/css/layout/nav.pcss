@@ -1,3 +1,18 @@
+/* purgecss start ignore */
+body.home {
+  .nav-main {
+    .nav-border {
+      border-color: transparent;
+      opacity: 0;
+      transition: $short ease;
+    }
+    .nav-border.hover {
+      border-color: black;
+      opacity: 1;
+    }
+  }
+}
+
 .nav-main {
   @apply relative;
 
@@ -107,7 +122,14 @@
         @apply mt-2;
       }
       ul:not(.submenu) > .nav-menu-item {
-        @apply ml-4;
+        @apply ml-5;
+
+        &.submenu-languages-2,
+        &.submenu-languages,
+        &.submenu-over-ons,
+        &.submenu-about-us {
+          @apply ml-10;
+        }
       }
 
       &.hover .placeholder-menu {
@@ -132,7 +154,15 @@
     .nav-menu {
       ul:not(.submenu) > .nav-menu-item {
         @apply ml-10;
+
+        &.submenu-languages-2,
+        &.submenu-languages,
+        &.submenu-over-ons,
+        &.submenu-about-us {
+          @apply ml-20;
+        }
       }
     }
   }
 }
+/* purgecss end ignore */

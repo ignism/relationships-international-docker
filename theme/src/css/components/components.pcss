@@ -37,29 +37,63 @@ button,
   }
 }
 
+.p-separator {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 .separator {
-  padding-top: $section-offset;
-  padding-bottom: $section-offset;
-  height: 12rem;
   background-size: cover;
   background-position: center;
+}
 
-  .paralax {
+figure {
+  &.no-paralax,
+  &.paralax {
     position: absolute;
     height: 200%;
     width: 100%;
     object-fit: cover;
   }
+
+  &.no-paralax {
+    top: -50%;
+  }
+}
+.separator .container {
+  min-height: 2em;
 }
 
 @screen md {
-  .separator {
-    height: 16rem;
+  .separator .container {
+    height: 8em;
   }
 }
 
 @screen lg {
-  .separator {
-    height: 20rem;
+  .separator .container {
+    height: 7em;
   }
 }
+
+@screen md {
+  .separator-no-text .container {
+    height: 4em;
+  }
+}
+
+@screen lg {
+  .separator-no-text .container {
+    height: 4em;
+  }
+}
+
+/* .swiper-landing .swiper-slide {
+  height: 8em !important;
+}
+
+@screen lg {
+  .swiper-landing .swiper-slide {
+    height: 7em !important;
+  }
+} */

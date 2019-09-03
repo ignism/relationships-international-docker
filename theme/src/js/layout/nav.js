@@ -66,10 +66,12 @@ class Nav extends CoreModule {
 
   mouseEnter(event) {
     event.currentTarget.classList.add('hover')
+    document.querySelector('.nav-border').classList.add('hover')
   }
 
   mouseLeave(event) {
     event.currentTarget.classList.remove('hover')
+    document.querySelector('.nav-border').classList.remove('hover')
   }
 
   onToggle(event) {

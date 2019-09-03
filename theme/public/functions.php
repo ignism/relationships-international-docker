@@ -123,6 +123,12 @@ class RelationshipsInternational extends Timber\Site
         );
         $context['media_articles'] = Timber::get_posts($args);
 
+        $args = array(
+          'post_type' => 'widget'
+        );
+        $widgets = Timber::get_posts($args);
+        $context['footer_widget'] = $widgets[0];
+
         return $context;
     }
 
@@ -194,8 +200,8 @@ class RelationshipsInternational extends Timber\Site
 
     public function load_scripts()
     {
-        wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css');
-        wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css');
+        wp_enqueue_style('theme', get_template_directory_uri() . '/css/theme.css', array(), '1.0.0');
+        wp_enqueue_style('fonts', get_template_directory_uri() . '/css/fonts.css', array(), '1.0.0');
         wp_enqueue_script('theme', get_template_directory_uri() . '/js/theme.js', array(), '1.0.0', true);
         wp_enqueue_script('head', get_template_directory_uri() . '/js/head.js', array(), '1.0.0', false);
     }
@@ -214,6 +220,7 @@ class RelationshipsInternational extends Timber\Site
         $twig->addExtension(new Twig_Extension_StringLoader());
         $twig->addFilter(new Twig_SimpleFilter('limit_words', array($this, 'limit_words')));
         $twig->addFilter(new Twig_SimpleFilter('get_post_lang', array($this, 'get_post_lang')));
+        $twig->addFilter(new Twig_SimpleFilter('site_link', array($this, 'site_link')));
 
         return $twig;
     }
@@ -239,6 +246,16 @@ class RelationshipsInternational extends Timber\Site
       $lang = pll_get_post_language($post_id, 'locale');
 
       return $lang;
+    }
+
+    public function site_link($link)
+    {
+      $base = get_site_url();
+      if (mb_substr($link, 0, 1) == "/") {
+        $link = $base . $link;
+      }
+
+      return $link;
     }
 }
 new RelationshipsInternational();

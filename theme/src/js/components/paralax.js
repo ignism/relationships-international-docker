@@ -24,7 +24,7 @@ class Paralax extends CoreModule {
   placeElements(event) {
     this.elements.forEach(element => {
       let displacement = this.getDisplacement(offset(element).top)
-      element.style.top = (displacement * -50) + '%'
+      element.style.bottom = (displacement * -50) + '%'
     })
   }
 

@@ -4,15 +4,29 @@ module.exports = {
       sans: ['BasisGrotesquePro', 'sans-serif'],
       display: ['GTSuperDisplay', 'serif'],
     },
+    fontSize: {
+      'xs': '.75rem',
+      'sm': '.875rem',
+      'base': '1rem',
+      'lg': '1.125rem',
+      'xl': '1.25rem',
+      'xxl': '1.4rem',
+      '2xl': '1.6rem',
+      '3xl': '1.8rem',
+      '4xl': '2.25rem',
+      '5xl': '2.5rem',
+      '6xl': '3rem',
+      '7xl': '3.5rem',
+    },
     lineHeight: {
-      none: 0,
-      tight: 1.2,
+      none: 1,
+      tight: 1.1,
       normal: 1.4
     },
     extend: {
       colors: {
-        black: '#0c0c0c',
-        white: '#f9f9f9',
+        black: '#404040',
+        white: '#ffffff',
         brown: '#C1A67F',
         blue: '#BFE3ED',
         'blue-dark': '#AAD7E4',

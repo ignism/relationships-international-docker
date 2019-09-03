@@ -2,34 +2,28 @@
   font-family: 'BasisGrotesquePro';
   font-style:  normal;
   font-weight: 700;
-  src: url('BasisGrotesquePro-Bold.eot?') format('eot'),
-       url('BasisGrotesquePro-Bold.woff2') format('woff2'),
-       url('BasisGrotesquePro-Bold.woff') format('woff'),
-       url('BasisGrotesquePro-Bold.otf')  format('opentype'),
-       url('BasisGrotesquePro-Bold.ttf')  format('truetype'),
-       url('BasisGrotesquePro-Bold.svg#BasisGrotesquePro-Bold') format('svg');
+  src: url('basis-grotesque-bold-pro.eot?') format('eot'),
+       url('basis-grotesque-bold-pro.woff2') format('woff2'),
+       url('basis-grotesque-bold-pro.woff') format('woff'),
+       url('basis-grotesque-bold-pro.ttf')  format('truetype');
 }
 
 @font-face {
   font-family: 'BasisGrotesquePro';
   font-style:  normal;
   font-weight: 500;
-  src: url('BasisGrotesquePro-Medium.eot?') format('eot'),
-       url('BasisGrotesquePro-Medium.woff2') format('woff2'),
-       url('BasisGrotesquePro-Medium.woff') format('woff'),
-       url('BasisGrotesquePro-Medium.otf')  format('opentype'),
-       url('BasisGrotesquePro-Medium.ttf')  format('truetype'),
-       url('BasisGrotesquePro-Medium.svg#BasisGrotesquePro-Medium') format('svg');
+  src: url('basis-grotesque-medium-pro.eot?') format('eot'),
+       url('basis-grotesque-medium-pro.woff2') format('woff2'),
+       url('basis-grotesque-medium-pro.woff') format('woff'),
+       url('basis-grotesque-medium-pro.ttf')  format('truetype');
 }
 
 @font-face {
   font-family: 'BasisGrotesquePro';
   font-style:  normal;
   font-weight: 400;
-  src: url('BasisGrotesquePro.eot?') format('eot'),
-       url('BasisGrotesquePro.woff2') format('woff2'),
-       url('BasisGrotesquePro.woff') format('woff'),
-       url('BasisGrotesquePro.otf')  format('opentype'),
-       url('BasisGrotesquePro.ttf')  format('truetype'),
-       url('BasisGrotesquePro.svg#BasisGrotesquePro') format('svg');
+  src: url('basis-grotesque-regular-pro.eot?') format('eot'),
+       url('basis-grotesque-regular-pro.woff2') format('woff2'),
+       url('basis-grotesque-regular-pro.woff') format('woff'),
+       url('basis-grotesque-regular-pro.ttf')  format('truetype');
 }

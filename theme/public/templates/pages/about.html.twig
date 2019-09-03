@@ -32,16 +32,16 @@
       {% for item in post.meta('therapists') %}
 
       <div class="row flex-wrap mt-12">
-        <div class="col w-6/12 mb-6 md:mb-0 md:w-3/12 md:mx-1/12">
+        <div class="col w-6/12 mb-6 md:mb-0 md:w-3/12 md:mx-1/12 xl:w-2/12">
           <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
         </div>
 
         <div class="col md:w-6/12">
-          <h3>
+          <h3 class="font-normal">
             {{ item.name }} {{ item.degree }}<br>
             Relationships International {{ item.location }}
           </h3>
-          <p class="my-8">
+          <p class="my-8 text-lg">
             {{ item.bio }}
           </p>
           <p>
@@ -61,5 +61,10 @@
       
     </div>
   </section>
+
+      {% include "components/cta-footer.html.twig" with {
+      text: post.meta('page_footer'),
+      banner_index: 6
+    } %}
 
 {% endblock %}
