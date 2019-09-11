@@ -1,10 +1,15 @@
+/* purgecss start ignore */
 .swiper-pagination {
+  @apply flex justify-center h-2 z-50;
+  bottom: 20px;
+  width: 100%;
+
   .swiper-pagination-bullet {
-    @apply opacity-100 bg-white;
+    @apply opacity-100 bg-white w-2 h-2 mx-2 block rounded-full;
   }
 
   .swiper-pagination-bullet-active {
-    @apply opacity-100 bg-gray;
+    @apply opacity-100 bg-gray w-2 h-2;
   }
 }
 
@@ -19,7 +24,7 @@
 }
 
 .swiper-landing .swiper-slide {
-  height: 8em !important;
+  height: 12em !important;
 }
 
 @screen lg {
@@ -34,6 +39,13 @@
 
 @screen lg {
   .swiper-media .swiper-slide {
-    height: 16em !important;
+    height: 16rem !important;
   }
 }
+
+@screen xl {
+  .swiper-media .swiper-slide {
+    height: 20rem !important;
+  }
+}
+/* purgecss end ignore */

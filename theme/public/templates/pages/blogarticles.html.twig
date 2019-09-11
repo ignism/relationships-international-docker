@@ -13,7 +13,7 @@
 
   {% set banner_index = 3 %}
 
-  <section class="pt-12">
+  <section class="pt-28">
     <div class="container">
       <div class="row">
         <div class="col w-6/12 ml-1/12">
@@ -31,9 +31,9 @@
 
           <div class="col md:w-10/12 md:ml-1/12 lg:w-6/12 lg:ml-5/12">
             <article class="index-{{ loop.index }}">
-              <h2 class="text-blue font-medium">
+              <h3 class="text-blue font-medium" style="margin-bottom: 0.25rem">
                 {{ post.title }}
-              </h2>
+              </h3>
               <h3 class="font-normal">
                 By
                 {{ post.meta('author') }}

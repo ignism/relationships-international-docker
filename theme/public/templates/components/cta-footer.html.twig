@@ -2,15 +2,20 @@
   {% set banner_index = 1 %}
 {% endif %}
 
-<section class="pt-12">
-  <div class="separator p-separator w-full" style="background-image: url({{ theme.link }}/images/banner_{{ banner_index }}.jpg)">
-    <div class="container h-full flex flex-col justify-center text-white text-2xl">
+<section class="pt-6">
+  <div class="separator p-separator container relative">
+    <div class="separator-background overflow-hidden absolute inset-0 bg-red z-10">
+      <figure class="paralax">
+        <img src="{{ theme.link }}/images/banner_{{ banner_index }}.jpg" alt="">
+      </figure>
+    </div>
+    <div class="container h-full flex flex-col justify-center text-white text-2xl relative z-20">
       <div class="row">
         <div class="col md:10/12 lg:w-8/12 md:ml-1/12">
-        {% if text == "Contact us today<br>to get started." or text == false %}
-          <p class="text-3xl md:text-4xl lg:text-6xl xl:text-7xl text-white font-display font-bold leading-tight">Contact us today<br>to get started.</p>
+        {% if text == false or text == text|striptags|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|contact_us %}
+          <p class="text-xl md:text-4xl lg:text-6xl xl:text-7xl text-white font-display font-bold leading-tight">Contact us today<br>to get started.</p>
         {% else %}
-          <p class="text-3xl md:text-4xl lg:text-4xl xl:text-5xl text-white font-display font-bold leading-tight">{{ text }}</p>
+          <p class="text-xl md:text-4xl lg:text-4xl xl:text-5xl text-white font-display font-bold leading-tight">{{ text }}</p>
         {% endif %}
         </div>
       </div>

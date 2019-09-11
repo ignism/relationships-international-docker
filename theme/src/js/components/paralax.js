@@ -23,14 +23,14 @@ class Paralax extends CoreModule {
 
   placeElements(event) {
     this.elements.forEach(element => {
-      let displacement = this.getDisplacement(offset(element).top)
-      element.style.bottom = (displacement * -50) + '%'
+      let displacement = this.getDisplacement(element)
+      element.style.bottom = (displacement * -100) + '%'
     })
   }
 
-  getDisplacement(top) {
+  getDisplacement(element) {
     let h = window.innerHeight
-    let p = h + window.scrollY - top
+    let p = h + window.scrollY - offset(element).top - element.offsetHeight
     
     return Math.min(h, Math.max(0, p)) / h
   }

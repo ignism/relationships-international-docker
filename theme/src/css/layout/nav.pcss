@@ -120,16 +120,22 @@ body.home {
       @apply relative w-auto h-auto inset-auto flex-row p-0 bg-transparent text-black;
       .submenu {
         @apply mt-2;
+        .nav-menu-item {
+          /* @apply border-transparent border-b; */
+          &:hover a {
+            @apply text-gray;
+          }
+        }
       }
       ul:not(.submenu) > .nav-menu-item {
-        @apply ml-5;
+        @apply ml-6;
 
-        &.submenu-languages-2,
+        /* &.submenu-languages-2,
         &.submenu-languages,
         &.submenu-over-ons,
         &.submenu-about-us {
-          @apply ml-10;
-        }
+          @apply ml-5;
+        } */
       }
 
       &.hover .placeholder-menu {
@@ -146,6 +152,18 @@ body.home {
     .nav-burger {
       @apply hidden;
     }
+
+    .nav-menu-item {
+      .hover-line {
+        display: block;
+        box-sizing: content-box;
+        height: 25px;
+        padding-bottom: 4px;
+      }
+      &:hover .hover-line {
+        @apply border-black border-b-2;
+      }
+    }
   }
 }
 
@@ -159,9 +177,17 @@ body.home {
         &.submenu-languages,
         &.submenu-over-ons,
         &.submenu-about-us {
-          @apply ml-20;
+          @apply ml-10;
         }
       }
+    }
+
+    .hover-line {
+      height: 25px;
+      padding-bottom: 4px;
+    &:hover {
+      @apply border-black border-b-2;
+    }
     }
   }
 }

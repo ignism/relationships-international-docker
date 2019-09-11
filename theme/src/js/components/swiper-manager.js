@@ -14,10 +14,17 @@ class SwiperManager extends CoreModule {
       let instance = new Swiper(container, {
         loop: true,
         autoplay: autoplay,
+        simulateTouch: false,
+        allowTouchMove: false,
+        speed: 600,
         pagination: {
-          el: container.querySelector('.swiper-pagination')
+          el: container.querySelector('.swiper-pagination'),
+          clickable: true
         }
       })
+
+      container.instance = instance
+      container.addEventListener('click', this.onClick)
 
       this.instances.push(instance)
     })
@@ -26,11 +33,18 @@ class SwiperManager extends CoreModule {
   }
 
   destroy() {
+    this.containers.forEach(container => {
+      container.removeEventListener('click', this.onClick)
+    })
     this.instances.forEach(instance => {
       instance.destroy()
     })
 
     super.destroy()
+  }
+
+  onClick(event) {
+    event.currentTarget.instance.slideNext()
   }
 }
 

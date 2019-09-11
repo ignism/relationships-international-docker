@@ -221,6 +221,8 @@ class RelationshipsInternational extends Timber\Site
         $twig->addFilter(new Twig_SimpleFilter('limit_words', array($this, 'limit_words')));
         $twig->addFilter(new Twig_SimpleFilter('get_post_lang', array($this, 'get_post_lang')));
         $twig->addFilter(new Twig_SimpleFilter('site_link', array($this, 'site_link')));
+        $twig->addFilter(new Twig_SimpleFilter('googleAddress', array($this, 'googleAddress')));
+        $twig->addFilter(new Twig_SimpleFilter('contact_us', array($this, 'contact_us')));
 
         return $twig;
     }
@@ -256,6 +258,28 @@ class RelationshipsInternational extends Timber\Site
       }
 
       return $link;
+    }
+
+    public function googleAddress($address)
+    {
+
+      //https://www.google.com/maps/search/Groot+Blankenberg+56+1082+AD+Amsterdam
+      //Groot Blankenberg 56,1082 AD Amsterdam
+      $address = str_replace(" ", "+", $address);
+      $address = str_replace(",", "+", $address);
+
+      $link = 'https://www.google.com/maps/search/' . $address;
+      return $link;
+    }
+
+    public function contact_us($text)
+    {
+      $text = str_replace(" ", "", $text);
+      $text = str_replace(".", "", $text);
+      $text = str_replace(",", "", $text);
+      $text = strtolower($text);
+
+      return $text == "contactustodaytogetstarted";
     }
 }
 new RelationshipsInternational();

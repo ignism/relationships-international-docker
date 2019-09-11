@@ -5,8 +5,8 @@
 {% set main_class = ['header-offset'] %}
 
 {% block main %}
-  <section class="pb-12 text-xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-display font-bold -mt-20 lg:-mt-12">
-    <div class="swiper-container swiper-landing h-full" data-autoplay="true">
+  <section class="pb-12 text-xl md:text-4xl lg:text-5xl xl:text-xl-banner text-white font-display font-bold lg:-mt-12">
+    <div class="swiper-container swiper-landing h-full container" data-autoplay="true">
       <div class="swiper-wrapper">
 
         {% for slide in post.meta("header_slider") %}
@@ -25,10 +25,10 @@
                 <img src="{{ theme.link }}/images/banner_{{ slider_index }}.jpg" alt="">
               </figure>
             </div>
-            <div class="container h-full flex items-start">
-              <div class="row w-full">
-                <div class="col md:w-10/12 md:mx-1/12">
-                  <p class="max-w-4xl xl:max-w-5xl leading-tight">
+            <div class="container h-full w-full flex items-start" style="box-sizing: border-box">
+              <div class="flex w-full">
+                <div class="w-full md:w-10/12 md:mx-1/12">
+                  <p class="max-w-4xl xl:max-w-banner leading-tight">
                     {{ slide.slide_text }}
                   </p>
                 </div>
@@ -39,67 +39,77 @@
         {% endfor %}
 
       </div>
-      <div class="swiper-pagination"></div>
+      <div class="swiper-pagination" style="bottom:40px"></div>
     </div>
   </section>
 
-  <section class="section text-base md:text-lg lg:text-xl xl:text-xxl">
+  <section class="section text-base md:text-lg lg:text-xl">
     <div class="container">
       <div class="row flex-wrap">
 
-        <div class="col mb-12 lg:mb-0 md:w-8/12 lg:w-4/12 md:ml-2/12 lg:ml-1/12 flex flex-col justify-between">
-          <div class="block">
-            <div class="flex items-end mb-8">
-              <div class="flex-schrink mr-4">
-                <img class="w-10/12" src="{{ theme.link }}/images/couples.svg" alt="">
-              </div>
-              <div class="flex-grow">
-                <h3 class="font-bold">Couples</h3>
-              </div>
+        <div class="col md:w-6/12 lg:w-4/12 lg:ml-1/12">
+          <div class="flex items-end mb-8">
+            <div class="flex-schrink mr-4">
+              <img class="w-10/12" src="{{ theme.link }}/images/professionals_green.svg" alt="">
             </div>
-            <p>
-              {{ post.meta('therapy').couples }}
-            </p>
+            <div class="flex-grow">
+              <h3 class="font-bold">Professionals</h3>
+            </div>
           </div>
-          <div class="block">
-            <p class="text-green text-right underline pt-4">
-              {% if locale == "en_GB" %}
-                <a href="{{ site.link }}/en-couples-therapy">Read more</a>
-              {% else %}
-                <a href="{{ site.link }}/nl/nl-couples-therapy">Lees verder</a>
-              {% endif %}
-            </p>
-          </div>
+          <p>
+            {{ post.meta('professionals') }}
+          </p>
+          <p class="text-green text-right underline pt-4">
+            {% if locale == "en_GB" %}
+              <a href="{{ site.link }}/en-individual-counseling">Read more</a>
+            {% else %}
+              <a href="{{ site.link }}/nl/nl-individual-counseling">Lees verder</a>
+            {% endif %}
+          </p>
         </div>
 
-        <div class="col md:w-8/12 lg:w-4/12 md:ml-2/12 lg:mr-1/12 flex flex-col justify-between">
-          <div class="block">
-            <div class="flex items-end mb-8">
-              <div class="flex-schrink mr-4">
-                <img class="w-10/12" src="{{ theme.link }}/images/individuals.svg" alt="">
-              </div>
-              <div class="flex-grow">
-                <h3 class="font-bold">Individuals</h3>
-              </div>
-            </div>
-            <p>
-              {{ post.meta('therapy').individuals }}
-            </p>
-          </div>
+        {% set level_1 = 'en-professionals-level-1' %}
+        {% set level_2 = 'en-professionals-level-2' %}
+        {% set level_3 = 'en-professionals-level-3' %}
 
-          <div class="block">
-            <p class="text-green text-right underline pt-4">
-              {% if locale == "en_GB" %}
-                <a href="{{ site.link }}/en-individual-counseling">Read more</a>
-              {% else %}
-                <a href="{{ site.link }}/nl/nl-individual-counseling">Lees verder</a>
-              {% endif %}
-            </p>
+        {% if locale == "nl_NL" %}
+          {% set level_1 = 'nl/nl-professionals-level-1' %}
+          {% set level_2 = 'nl/nl-professionals-level-2' %}
+          {% set level_3 = 'nl/nl-professionals-level-3' %}
+        {% endif %}
+        
+
+
+        <div class="col w-full mt-12 md:mt-0 md:w-6/12 lg:w-5/12 lg:ml-1/12 lg:mr-1/12">
+          <div class="flex flex-wrap h-full text-white text-xl font-medium leading-tight">
+            <div class="ml-2/12 w-6/12 min-h-4/12 bg-blue" style="background-color: #d9eef4">
+              <a href="{{ site.link }}/{{ level_1 }}" class="hover:no-underline">
+                <div class="h-full flex flex-col items-center justify-center py-4">
+                  <div>Gottman</div>
+                  <div class="underline">Level 1</div>
+                </div>
+              </a>
+            </div>
+            <div class="ml-4/12 w-6/12 min-h-4/12 bg-blue-dark" style="background-color: #cfeaf1">
+              <a href="{{ site.link }}/{{ level_2 }}" class="hover:no-underline">
+                <div class="h-full flex flex-col items-center justify-center py-4">
+                  <div>Gottman</div>
+                  <div class="underline">Level 2</div>
+                </div>
+              </a>
+            </div>
+            <div class="ml-1/12 w-6/12 min-h-4/12 bg-blue-darker" style="background-color: #bfe3ed">
+              <a href="{{ site.link }}/{{ level_3 }}" class="hover:no-underline">
+                <div class="h-full flex flex-col items-center justify-center py-4">
+                  <div>Gottman</div>
+                  <div class="underline">Level 3</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
@@ -116,49 +126,57 @@
         <div class="col md:w-6/12 lg:w-4/12 lg:ml-1/12">
           <div class="flex items-end mb-8">
             <div class="flex-schrink mr-4">
-              <img class="w-10/12" src="{{ theme.link }}/images/professionals.svg" alt="">
+              <img class="w-10/12" src="{{ theme.link }}/images/couples_red.svg" alt="">
             </div>
             <div class="flex-grow">
-              <h3 class="font-bold">Professionals</h3>
+              <h3 class="font-bold">Couples</h3>
             </div>
           </div>
           <p>
-            {{ post.meta('professionals') }}
+            {{ post.meta('therapy').couples }}
           </p>
           <p class="text-red text-right underline pt-4">
             {% if locale == "en_GB" %}
-              <a href="{{ site.link }}/en-individual-counseling">Read more</a>
+              <a href="{{ site.link }}/en-couples-therapy">Read more</a>
             {% else %}
-              <a href="{{ site.link }}/nl/nl-individual-counseling">Lees verder</a>
+              <a href="{{ site.link }}/nl/nl-couples-therapy">Lees verder</a>
             {% endif %}
           </p>
         </div>
 
+        {% set couples_text = "Couples" %}
+        {% set link_1 = 'en-couples-therapy' %}
+        {% set link_2 = 'workshop' %}
+
+        {% if locale == "nl_NL" %}
+          {% set link_1 = 'nl/nl-couples-therapy' %}
+          {% set couples_text = "Koppels" %}
+        {% endif %}
+        
+
+
         <div class="col w-full mt-12 md:mt-0 md:w-6/12 lg:w-5/12 lg:ml-1/12 lg:mr-1/12">
           <div class="flex flex-wrap h-full text-white text-xl font-medium leading-tight">
-            <div class="ml-2/12 w-6/12 min-h-4/12 bg-blue">
-              <a href="#" class="hover:no-underline">
+            <div class="ml-4/12 w-6/12 min-h-4/12" style="background-color: #ffd6c3">
+              <a href="{{ site.link }}/{{ link_1 }}" class="hover:no-underline">
                 <div class="h-full flex flex-col items-center justify-center py-4">
-                  <div>Gottman</div>
-                  <div class="underline">Level 1</div>
+                  <div>{{ couples_text }}</div>
+                  <div class="underline">Therapy</div>
                 </div>
               </a>
             </div>
-            <div class="ml-4/12 w-6/12 min-h-4/12 bg-blue-dark">
-              <a href="#" class="hover:no-underline">
+            <div class="ml-2/12 w-6/12 min-h-4/12" style="background-color: #ffc2a5">
+              <a href="{{ site.link }}/{{ link_2 }}" class="hover:no-underline">
                 <div class="h-full flex flex-col items-center justify-center py-4">
-                  <div>Gottman</div>
-                  <div class="underline">Level 2</div>
+                  <div>{{ couples_text }}</div>
+                  <div class="underline">Workshops</div>
                 </div>
               </a>
             </div>
-            <div class="ml-1/12 w-6/12 min-h-4/12 bg-blue-darker">
-              <a href="#" class="hover:no-underline">
-                <div class="h-full flex flex-col items-center justify-center py-4">
-                  <div>Gottman</div>
-                  <div class="underline">Level 3</div>
-                </div>
-              </a>
+            <div class="ml-1/12 w-6/12 min-h-4/12">
+            <div class="py-4">
+            &nbsp;
+            </div>
             </div>
           </div>
         </div>
@@ -175,14 +193,14 @@
   <section class="section lg:-mt-40 text-base md:text-lg lg:text-xl relative z-30">
     <div class="container">
       <div class="row flex-wrap">
-        <div class="col w-full lg:w-2/12 lg:ml-1/12">
+        <div class="col w-full lg:w-3/12 xl:w-2/12 lg:ml-1/12">
           <h1 class="font-display text-brown mb-12 lg:mb-0 lg:mt-32">
             Meet the<br>therapists:
           </h1>
         </div>
 
         {% for item in post.meta("therapists") %}
-          <div class="col w-10/12 mx-1/12 mb-12 md:mb-0 md:w-5/12 lg:w-3/12 md:ml-0">
+          <div class="col w-10/12 mx-1/12 mb-12 md:mb-0 md:w-5/12 lg:w-3/12 md:mr-0 lg:ml-0 lg:mr-1/12">
             <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
               <div class="pt-8">
                 <div class="leading-normal font-bold">{{ item.name }}</div>
@@ -216,10 +234,10 @@
       banner_index: 5
     } %}
 
-    <section class="py-8 lg:py-16 xl:py-20">
+    <section class="section">
       <div class="container">
-        <div class="swiper-container swiper-media h-full">
-          <div class="swiper-wrapper pb-32">
+        <div class="swiper-container swiper-media">
+          <div class="swiper-wrapper pb-16">
 
             {% for slide in media_articles %}
 
@@ -227,7 +245,7 @@
                 <div class="h-full flex items-start">
                   <div class="flex w-full">
                     <div class="w-10/12 md:w-6/12 lg:w-6/12 mx-auto">
-                      <p class="quoted text-center leading-tight text-xl md:text-3xl lg:text-5xl xl:text-7xl">{{ slide.title }}</p>
+                      <p class="quoted text-center leading-tight text-xl md:text-3xl lg:text-5xl xl:text-6xl">{{ slide.title }}</p>
                       <p class="text-center text-brown leading-tight text-xl lg:text-3xl pt-4 pb-2 lg:pt-16 lg:pb-6">{{ slide.source }}</p>
                       <p class="text-center text-brown leading-tight text-base lg:text-xl">
                         <a class="border-b border-brown" href="{{ site.link }}/mediaarticle">view more</a>

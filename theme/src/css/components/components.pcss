@@ -1,3 +1,13 @@
+.loader {
+  @apply fixed inset-0 w-screen h-screen bg-white;
+  z-index: 9999;
+  transition: opacity $long ease; 
+}
+
+.hover-underline:hover {
+  @apply underline;
+}
+
 button,
 .button {
     @apply px-4 py-2 bg-gray mt-4;
@@ -37,11 +47,6 @@ button,
   }
 }
 
-.p-separator {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
 .separator {
   background-size: cover;
   background-position: center;
@@ -62,11 +67,21 @@ figure {
 }
 .separator .container {
   min-height: 2em;
+  padding: 0;
+}
+
+.p-separator {
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 @screen md {
   .separator .container {
     height: 8em;
+  }
+  .p-separator {
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 }
 

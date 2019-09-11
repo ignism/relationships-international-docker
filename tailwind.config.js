@@ -15,7 +15,8 @@ module.exports = {
       '3xl': '1.8rem',
       '4xl': '2.25rem',
       '5xl': '2.5rem',
-      '6xl': '3rem',
+      '6xl': '2.75rem',
+      'xl-banner': '2.75rem',
       '7xl': '3.5rem',
     },
     lineHeight: {
@@ -49,7 +50,11 @@ module.exports = {
         '10/12': '83.33333%',
         '11/12': '91.66667%',
         'full': '100%',
+        '28': '7rem',
       },
+      maxWidth: {
+        'banner': '58rem'
+      }
     }
   },
   variants: {},

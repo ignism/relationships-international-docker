@@ -23,7 +23,8 @@
     {% block head %}{% endblock %}
   </head>
 
-  <body class="{{ body_class|join(' ') }}">
+  <body class="">
+    <div class="loader"></div>
     <div class="barba-wipe z-40"></div>
 
     {% block header %}
@@ -55,7 +56,7 @@
         {% set banner_index = 1 %}
       {% endif %}
 
-      <main class="main accent-{{ accent_color }} {{ main_class|join(' ') }}" data-barba="container" data-barba-namespace="{{ post.post_name }}">
+      <main class="main accent-{{ accent_color }} {{ main_class|join(' ') }} {{ body_class|join(' ') }}" data-barba="container" data-barba-namespace="{{ post.post_name }}">
         <div class="breadcrumps-placeholder hidden">
 
           <ul class="flex justify-start breadcrumps">

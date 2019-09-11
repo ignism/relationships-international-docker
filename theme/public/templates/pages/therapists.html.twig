@@ -4,7 +4,7 @@
 
 {% block main %}
 
-  <section class="pt-12">
+  <section class="pt-28">
     <div class="container">
       <div class="row">
         <div class="col w-6/12 ml-1/12">
@@ -18,10 +18,10 @@
     <section class="section">
       <div class="container">
       <div class="row flex-wrap">
-      <div class="col w-3/12 mx-1/12">
+      <div class="col w-6/12 mb-12 md:mb-0 md:w-3/12 md:mx-1/12">
         <img{{ item.portrait|get_timber_image_responsive('portrait-30vw') }}>
       </div>
-      <div class="col w-5/12 therapists-wysiwyg">
+      <div class="col w-full md:w-5/12 therapists-wysiwyg">
         <h3 class="font-normal">{{ item.name }}</h3>
         {{ item.details }}
       </div>

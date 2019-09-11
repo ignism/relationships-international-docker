@@ -1,6 +1,6 @@
 <div class="footer-wrapper relative">
 
-  <footer id="contact" class="section footer-main bg-gray text-xs lg:text-lg xl:text-xl text-white z-30">
+  <footer id="contact" class="footer-main bg-gray text-sm lg:text-lg xl:text-xl text-white z-30">
     <div class="container">
 
       <div class="row flex-wrap">
@@ -8,15 +8,26 @@
         {% for item in footer_widget.meta('locations') %}
           
           <div class="col md:w-5/12 lg:w-4/12 lg:ml-1/12">
-            <p class="font-display font-bold text-3xl; md:text-4xl lg:text-6xl xl:text-7xl my-6">{{ item.location }}</p>
-            <p class="font-bold">Relationships International - {{ item.location }}</p>
+            <p class="font-display font-bold text-3xl md:text-4xl lg:text-6xl xl:text-7xl my-6">{{ item.location }}</p>
+            <p class="font-medium">Relationships International - {{ item.location }}</p>
             <p>{{ item.name }}</p>
             <ul class="py-4">
-              <li>T {{ item.phone }}</li>
-              <li>E {{ item.email }}</li>
+              <li>
+              {% if item.location == "Amsterdam" %}
+              <a class="hover-underline" href="tel:{{ item.phone }}">T {{ item.phone }}</a>
+              {% else %}
+                T {{ item.phone }}
+              {% endif %}
+              
+              </li>
+              <li>E <a class="hover-underline" href="mailto:{{ item.email }}">{{ item.email }}</a></li>
             </ul>
-              <p class="">{{ item.address }}</p>
-            <p class="py-4 text-base">
+              <p class="">
+                <a class="hover-underline" target="_blank" href="{{ item.address|striptags|replace({"\n": "", "\r\n": "", "\t": "", "\n\r": ""})|googleAddress }}">
+                  {{ item.address }}
+                </a>
+              </p>
+            <p class="py-4 lg:text-base">
               {{ item.how_to_reach }}
             </p>
           </div>
@@ -25,11 +36,11 @@
 
       </div>
 
-      <div class="row text-base">
+      <div class="row">
         <div class="col w-full lg:w-11/12 lg:ml-1/12 flex justify-between items-end">
-          <p class="opacity-50">
+          <p class="text-sm opacity-50">
             Relationships International ©2019<br>
-            Design: Studio of Things
+            Design: <a target="_blank" href="https://www.studioofthings.nl/">Studio of Things</a> 
           </p>
           <div class="branding">
             <img src="{{ theme.link }}/images/logo-white.svg" alt="">

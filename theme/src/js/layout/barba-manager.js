@@ -7,6 +7,11 @@ import { CoreModule } from '../core/core-module'
 class BarbaManager extends CoreModule {
   init() {
     barba.use(barbaCss)
+
+    if (document.querySelector('.main').classList.contains('home')) {
+      document.body.classList.add('home')
+    }
+
     try {
       barba.init({
         prevent: ({ el }) => el.classList && el.classList.contains('prevent'),
@@ -38,6 +43,11 @@ class BarbaManager extends CoreModule {
               })
 
               window.scrollTo(0, 0)
+
+              document.body.classList.remove('home')
+              if (main.classList.contains('home')) {
+                document.body.classList.add('home')
+              }
 
               eventBus.$emit('barba-before-enter')
             },
